@@ -18,6 +18,7 @@ export class SignUpController implements Controller {
       });
       return ok(isValid);
     } catch (error) {
+      console.log(error)
       return serverError(error);
     }
   }

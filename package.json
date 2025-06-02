@@ -5,7 +5,11 @@
   "scripts": {
     "build": "rimraf dist && tsc -p tsconfig-build.json",
     "start": "node dist/main/server.js",
+<<<<<<< HEAD
     "dev": "cross-env NODE_ENV=production nodemon --ext ts --exec ts-node src/main/server.ts",
+=======
+    "dev": "nodemon --ext ts --exec ts-node src/main/server.ts",
+>>>>>>> eca3bb0c467d383310624a636bbe931495ce9783
     "test": "jest --passWithNoTests --runInBand --no-cache",
     "test:unit": "npm test -- -c jest-unit-config.js",
     "test:ci": "npm test -- --coverage",
@@ -23,8 +27,13 @@
     "@types/jest": "^29.5.14",
     "@types/node": "^22.12.0",
     "@types/xlsx": "^0.0.35",
+<<<<<<< HEAD
     "@typescript-eslint/eslint-plugin": "6.21.0",
     "eslint": "8.57.1",
+=======
+    "@typescript-eslint/eslint-plugin": "^6.21.0",
+    "eslint": "^8.57.1",
+>>>>>>> eca3bb0c467d383310624a636bbe931495ce9783
     "eslint-config-standard-with-typescript": "^43.0.1",
     "eslint-plugin-import": "^2.31.0",
     "eslint-plugin-n": "15.7.0",
