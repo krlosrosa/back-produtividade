@@ -1,44 +1,40 @@
 # Etapa 1 - Build
 FROM node:18 AS builder
 
-# Diretório de trabalho dentro do container
 WORKDIR /app
 
-# Copia os arquivos de definição de dependências
-COPY package.json package-lock.json* ./
-
 # Instala dependências
+COPY package.json package-lock.json* ./
 RUN npm install
 
-# Copia os arquivos restantes da aplicação
+# Copia todos os arquivos
 COPY . .
 
-# Gera os arquivos do Prisma
+# Gera o Prisma Client
 RUN npx prisma generate
 
-# Executa as migrações em produção (opcional)
-# Descomente se usar migrations em produção
+# (Opcional) Executa as migrações em produção
 # RUN npx prisma migrate deploy
 
-# Compila o projeto (por exemplo, TypeScript)
+# Compila o projeto com o tsconfig específico
 RUN npm run build
 
-# Etapa 2 - Runtime (mais leve)
+# Etapa 2 - Runtime
 FROM node:18-slim
 
 WORKDIR /app
 
-# Copia apenas o necessário do container builder
+# Copia os arquivos necessários da etapa de build
+COPY --from=builder /app/package.json ./
 COPY --from=builder /app/node_modules ./node_modules
 COPY --from=builder /app/dist ./dist
-COPY --from=builder /app/package.json ./
 COPY --from=builder /app/prisma ./prisma
 
-# Gera novamente o Prisma Client (no ambiente de runtime)
+# Gera o Prisma Client no runtime também (por segurança)
 RUN npx prisma generate
 
-# Porta padrão (caso precise expor para o Coolify detectar)
+# Expõe a porta que o Coolify vai mapear
 EXPOSE 3000
 
-# Comando para iniciar o app
-CMD ["npm", "start"]
+# Starta o app com Node (sem nodemon)
+CMD ["node", "dist/main/server.js"]
