@@ -1,0 +1,8 @@
+export interface {{pascalCase name}}Repository {
+  {{camelCase  metodo}}: (params: {{pascalCase name}}Repository.Params) => Promise<{{pascalCase name}}Repository.Result>
+}
+
+export namespace {{pascalCase name}}Repository {
+  export type Params = {}
+  export type Result = {}
+}

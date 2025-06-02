@@ -1,0 +1,117 @@
+import { type Validator, type ReturnValidatorType } from '../../../src/validation/protocols/validator'
+import { type {{pascalCase name}} } from '../../../src/domain/usecases/'
+import { badRequest, ok, serverError } from '../../../src/presentation/helpers'
+import { {{pascalCase name}}Controller } from '../../../src/presentation/controllers/'
+
+interface SutTypes {
+  sut: {{pascalCase name}}Controller
+  useCaseStub: {{pascalCase name}}
+  validatorStub: Validator
+}
+
+const makeValidator = (): Validator => {
+  class ValidatorStub implements Validator {
+    isValid (input: unknown): ReturnValidatorType {
+      return { isValid: true }
+    }
+  }
+  return new ValidatorStub()
+}
+
+const makeUseCase = (): {{pascalCase name}} => {
+  class UseCaseStub implements {{pascalCase name}} {
+    async {{metodo}} (request: any): Promise<any> {
+      return mockResult()
+    }
+  }
+  return new UseCaseStub()
+}
+
+const mockResult = (): any => ([
+  { id: 1, field: 'value' },
+  { id: 2, field: 'value2' }
+])
+
+const mockRequest = (): any => ({
+  param: 'value'
+})
+
+const makeSut = (): SutTypes => {
+  const useCaseStub = makeUseCase()
+  const validatorStub = makeValidator()
+  const sut = new {{pascalCase name}}Controller(useCaseStub, validatorStub)
+  return { sut, useCaseStub, validatorStub }
+}
+
+describe('{{pascalCase name}}Controller', () => {
+  describe('🧪 Validação de Entrada', () => {
+    test('deve retornar 400 se o validator retornar erro', async () => {
+      const { sut, validatorStub } = makeSut()
+      jest.spyOn(validatorStub, 'isValid').mockReturnValueOnce({
+        isValid: false,
+        error: new Error('Campo obrigatório faltando')
+      })
+      const response = await sut.handle(mockRequest())
+      expect(response).toEqual(badRequest(new Error('Campo obrigatório faltando')))
+    })
+
+    test('deve chamar o validator com os dados corretos', async () => {
+      const { sut, validatorStub } = makeSut()
+      const isValidSpy = jest.spyOn(validatorStub, 'isValid')
+      await sut.handle(mockRequest())
+      expect(isValidSpy).toHaveBeenCalledWith(mockRequest())
+    })
+
+    test('não deve chamar o useCase se a validação falhar', async () => {
+      const { sut, validatorStub, useCaseStub } = makeSut()
+      jest.spyOn(validatorStub, 'isValid').mockReturnValueOnce({
+        isValid: false,
+        error: new Error('Validação falhou')
+      })
+      const spy = jest.spyOn(useCaseStub, '{{metodo}}')
+      await sut.handle(mockRequest())
+      expect(spy).not.toHaveBeenCalled()
+    })
+  })
+
+  describe('🔁 Integração com Use Case', () => {
+    test('deve chamar o useCase com os parâmetros corretos', async () => {
+      const { sut, useCaseStub } = makeSut()
+      const spy = jest.spyOn(useCaseStub, '{{metodo}}')
+      await sut.handle(mockRequest())
+      expect(spy).toHaveBeenCalledWith(mockRequest())
+    })
+
+    test('deve chamar o useCase apenas uma vez', async () => {
+      const { sut, useCaseStub } = makeSut()
+      const spy = jest.spyOn(useCaseStub, '{{metodo}}')
+      await sut.handle(mockRequest())
+      expect(spy).toHaveBeenCalledTimes(1)
+    })
+  })
+
+  describe('📤 Formatação da Resposta', () => {
+    test('deve retornar 200 com os dados corretos', async () => {
+      const { sut } = makeSut()
+      const response = await sut.handle(mockRequest())
+      expect(response).toEqual(ok(mockResult()))
+    })
+
+    test('deve retornar array vazio se não houver dados', async () => {
+      const { sut, useCaseStub } = makeSut()
+      jest.spyOn(useCaseStub, '{{metodo}}').mockResolvedValueOnce([])
+      const response = await sut.handle(mockRequest())
+      expect(response).toEqual(ok([]))
+    })
+  })
+
+  describe('⚠️ Tratamento de Erros', () => {
+    test('deve retornar 500 se o useCase lançar exceção', async () => {
+      const { sut, useCaseStub } = makeSut()
+      const error = new Error('Erro interno')
+      jest.spyOn(useCaseStub, '{{metodo}}').mockRejectedValueOnce(error)
+      const response = await sut.handle(mockRequest())
+      expect(response).toEqual(serverError(error))
+    })
+  })
+})

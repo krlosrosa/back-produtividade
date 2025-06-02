@@ -1,0 +1,6 @@
+router.{{lowerCase metodohttp}}("/{{rota}}",
+  adaptMiddleware(makeAuthMiddleware()),
+  adaptRoute(make{{pascalCase name}}Controller())
+);
+
+ // ## ADDROUTE

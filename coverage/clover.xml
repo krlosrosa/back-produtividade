@@ -1,0 +1,361 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1743291840355" clover="3.2.0">
+  <project timestamp="1743291840355" name="All files">
+    <metrics statements="220" coveredstatements="108" conditionals="51" coveredconditionals="32" methods="67" coveredmethods="29" elements="338" coveredelements="169" complexity="0" loc="220" ncloc="220" packages="14" files="31" classes="31"/>
+    <package name="data.useCases">
+      <metrics statements="8" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="4"/>
+      <file name="db-include-invoice-in-demand.ts" path="C:\Users\421931\Desktop\projects_carlos\return-new\src\data\useCases\db-include-invoice-in-demand.ts">
+        <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="5" count="3" type="stmt"/>
+        <line num="7" count="3" type="stmt"/>
+        <line num="8" count="2" type="stmt"/>
+      </file>
+      <file name="db-register-demand.ts" path="C:\Users\421931\Desktop\projects_carlos\return-new\src\data\useCases\db-register-demand.ts">
+        <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="5" count="3" type="stmt"/>
+        <line num="7" count="3" type="stmt"/>
+        <line num="8" count="2" type="stmt"/>
+      </file>
+    </package>
+    <package name="infra.auth.jwt">
+      <metrics statements="19" coveredstatements="0" conditionals="3" coveredconditionals="0" methods="4" coveredmethods="0"/>
+      <file name="jwt-adapter-make.ts" path="C:\Users\421931\Desktop\projects_carlos\return-new\src\infra\auth\jwt\jwt-adapter-make.ts">
+        <metrics statements="3" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
+        <line num="4" count="0" type="stmt"/>
+        <line num="6" count="0" type="stmt"/>
+        <line num="10" count="0" type="stmt"/>
+      </file>
+      <file name="jwt-adapter.ts" path="C:\Users\421931\Desktop\projects_carlos\return-new\src\infra\auth\jwt\jwt-adapter.ts">
+        <metrics statements="16" coveredstatements="0" conditionals="3" coveredconditionals="0" methods="2" coveredmethods="0"/>
+        <line num="3" count="0" type="stmt"/>
+        <line num="4" count="0" type="stmt"/>
+        <line num="5" count="0" type="stmt"/>
+        <line num="6" count="0" type="stmt"/>
+        <line num="7" count="0" type="stmt"/>
+        <line num="9" count="0" type="stmt"/>
+        <line num="11" count="0" type="stmt"/>
+        <line num="12" count="0" type="cond" truecount="0" falsecount="1"/>
+        <line num="13" count="0" type="stmt"/>
+        <line num="18" count="0" type="stmt"/>
+        <line num="19" count="0" type="stmt"/>
+        <line num="20" count="0" type="stmt"/>
+        <line num="22" count="0" type="stmt"/>
+        <line num="23" count="0" type="cond" truecount="0" falsecount="1"/>
+        <line num="24" count="0" type="cond" truecount="0" falsecount="1"/>
+        <line num="25" count="0" type="stmt"/>
+      </file>
+    </package>
+    <package name="infra.cache">
+      <metrics statements="20" coveredstatements="0" conditionals="3" coveredconditionals="0" methods="13" coveredmethods="0"/>
+      <file name="chace-console.ts" path="C:\Users\421931\Desktop\projects_carlos\return-new\src\infra\cache\chace-console.ts">
+        <metrics statements="6" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="5" coveredmethods="0"/>
+        <line num="3" count="0" type="stmt"/>
+        <line num="5" count="0" type="stmt"/>
+        <line num="9" count="0" type="stmt"/>
+        <line num="13" count="0" type="stmt"/>
+        <line num="17" count="0" type="stmt"/>
+        <line num="21" count="0" type="stmt"/>
+      </file>
+      <file name="redis.ts" path="C:\Users\421931\Desktop\projects_carlos\return-new\src\infra\cache\redis.ts">
+        <metrics statements="14" coveredstatements="0" conditionals="3" coveredconditionals="0" methods="8" coveredmethods="0"/>
+        <line num="1" count="0" type="stmt"/>
+        <line num="4" count="0" type="stmt"/>
+        <line num="9" count="0" type="stmt"/>
+        <line num="19" count="0" type="stmt"/>
+        <line num="20" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="21" count="0" type="stmt"/>
+        <line num="23" count="0" type="stmt"/>
+        <line num="28" count="0" type="stmt"/>
+        <line num="29" count="0" type="cond" truecount="0" falsecount="1"/>
+        <line num="30" count="0" type="stmt"/>
+        <line num="32" count="0" type="stmt"/>
+        <line num="37" count="0" type="stmt"/>
+        <line num="41" count="0" type="stmt"/>
+        <line num="45" count="0" type="stmt"/>
+      </file>
+    </package>
+    <package name="infra.convertFile">
+      <metrics statements="7" coveredstatements="7" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="2"/>
+      <file name="convert-for-json.ts" path="C:\Users\421931\Desktop\projects_carlos\return-new\src\infra\convertFile\convert-for-json.ts">
+        <metrics statements="7" coveredstatements="7" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="2"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="6" count="2" type="stmt"/>
+        <line num="7" count="2" type="stmt"/>
+        <line num="11" count="2" type="stmt"/>
+        <line num="12" count="2" type="cond" truecount="1" falsecount="0"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="15" count="1" type="cond" truecount="1" falsecount="0"/>
+      </file>
+    </package>
+    <package name="infra.convertFile.conversors">
+      <metrics statements="24" coveredstatements="23" conditionals="28" coveredconditionals="22" methods="5" coveredmethods="5"/>
+      <file name="xlsx-converter.ts" path="C:\Users\421931\Desktop\projects_carlos\return-new\src\infra\convertFile\conversors\xlsx-converter.ts">
+        <metrics statements="13" coveredstatements="12" conditionals="10" coveredconditionals="5" methods="2" coveredmethods="2"/>
+        <line num="3" count="2" type="stmt"/>
+        <line num="5" count="2" type="stmt"/>
+        <line num="7" count="3" type="stmt"/>
+        <line num="8" count="3" type="stmt"/>
+        <line num="9" count="3" type="stmt"/>
+        <line num="11" count="3" type="cond" truecount="0" falsecount="1"/>
+        <line num="12" count="0" type="stmt"/>
+        <line num="15" count="3" type="stmt"/>
+        <line num="17" count="3" type="cond" truecount="1" falsecount="0"/>
+        <line num="18" count="1" type="stmt"/>
+        <line num="21" count="2" type="cond" truecount="1" falsecount="1"/>
+        <line num="22" count="4" type="stmt"/>
+        <line num="28" count="2" type="stmt"/>
+      </file>
+      <file name="xml-converter.ts" path="C:\Users\421931\Desktop\projects_carlos\return-new\src\infra\convertFile\conversors\xml-converter.ts">
+        <metrics statements="11" coveredstatements="11" conditionals="18" coveredconditionals="17" methods="3" coveredmethods="3"/>
+        <line num="2" count="2" type="stmt"/>
+        <line num="4" count="2" type="stmt"/>
+        <line num="6" count="3" type="stmt"/>
+        <line num="8" count="3" type="cond" truecount="16" falsecount="1"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="12" count="2" type="stmt"/>
+        <line num="13" count="2" type="stmt"/>
+        <line num="18" count="2" type="cond" truecount="1" falsecount="0"/>
+        <line num="19" count="1" type="stmt"/>
+        <line num="29" count="1" type="stmt"/>
+        <line num="31" count="2" type="stmt"/>
+      </file>
+    </package>
+    <package name="infra.observability.logger">
+      <metrics statements="2" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="logger-provider.ts" path="C:\Users\421931\Desktop\projects_carlos\return-new\src\infra\observability\logger\logger-provider.ts">
+        <metrics statements="2" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="0" type="stmt"/>
+        <line num="3" count="0" type="stmt"/>
+      </file>
+    </package>
+    <package name="infra.observability.logger.logger-instances">
+      <metrics statements="22" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="10" coveredmethods="0"/>
+      <file name="logger-pino.ts" path="C:\Users\421931\Desktop\projects_carlos\return-new\src\infra\observability\logger\logger-instances\logger-pino.ts">
+        <metrics statements="7" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="5" coveredmethods="0"/>
+        <line num="1" count="0" type="stmt"/>
+        <line num="4" count="0" type="stmt"/>
+        <line num="5" count="0" type="stmt"/>
+        <line num="10" count="0" type="stmt"/>
+        <line num="14" count="0" type="stmt"/>
+        <line num="18" count="0" type="stmt"/>
+        <line num="22" count="0" type="stmt"/>
+      </file>
+      <file name="logger-winstson-teste.ts" path="C:\Users\421931\Desktop\projects_carlos\return-new\src\infra\observability\logger\logger-instances\logger-winstson-teste.ts">
+        <metrics statements="7" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="0" type="stmt"/>
+        <line num="2" count="0" type="stmt"/>
+        <line num="3" count="0" type="stmt"/>
+        <line num="4" count="0" type="stmt"/>
+        <line num="5" count="0" type="stmt"/>
+        <line num="7" count="0" type="stmt"/>
+        <line num="22" count="0" type="stmt"/>
+      </file>
+      <file name="logger-winstson.ts" path="C:\Users\421931\Desktop\projects_carlos\return-new\src\infra\observability\logger\logger-instances\logger-winstson.ts">
+        <metrics statements="8" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="5" coveredmethods="0"/>
+        <line num="1" count="0" type="stmt"/>
+        <line num="3" count="0" type="stmt"/>
+        <line num="5" count="0" type="stmt"/>
+        <line num="6" count="0" type="stmt"/>
+        <line num="22" count="0" type="stmt"/>
+        <line num="26" count="0" type="stmt"/>
+        <line num="30" count="0" type="stmt"/>
+        <line num="34" count="0" type="stmt"/>
+      </file>
+    </package>
+    <package name="infra.observability.metrics">
+      <metrics statements="9" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="metrics.ts" path="C:\Users\421931\Desktop\projects_carlos\return-new\src\infra\observability\metrics\metrics.ts">
+        <metrics statements="9" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="0" type="stmt"/>
+        <line num="2" count="0" type="stmt"/>
+        <line num="5" count="0" type="stmt"/>
+        <line num="6" count="0" type="stmt"/>
+        <line num="7" count="0" type="stmt"/>
+        <line num="8" count="0" type="stmt"/>
+        <line num="10" count="0" type="stmt"/>
+        <line num="15" count="0" type="stmt"/>
+        <line num="24" count="0" type="stmt"/>
+      </file>
+    </package>
+    <package name="infra.validators">
+      <metrics statements="11" coveredstatements="11" conditionals="2" coveredconditionals="2" methods="3" coveredmethods="3"/>
+      <file name="validator-zod.ts" path="C:\Users\421931\Desktop\projects_carlos\return-new\src\infra\validators\validator-zod.ts">
+        <metrics statements="11" coveredstatements="11" conditionals="2" coveredconditionals="2" methods="3" coveredmethods="3"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="7" count="2" type="stmt"/>
+        <line num="10" count="2" type="stmt"/>
+        <line num="11" count="2" type="cond" truecount="1" falsecount="0"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="13" count="2" type="stmt"/>
+        <line num="14" count="1" type="stmt"/>
+        <line num="19" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="20" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="presentation.controllers">
+      <metrics statements="24" coveredstatements="24" conditionals="3" coveredconditionals="3" methods="4" coveredmethods="4"/>
+      <file name="include-invoice-in-demand.ts" path="C:\Users\421931\Desktop\projects_carlos\return-new\src\presentation\controllers\include-invoice-in-demand.ts">
+        <metrics statements="14" coveredstatements="14" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="2"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="10" count="7" type="stmt"/>
+        <line num="11" count="7" type="stmt"/>
+        <line num="12" count="7" type="stmt"/>
+        <line num="16" count="7" type="stmt"/>
+        <line num="17" count="7" type="stmt"/>
+        <line num="18" count="7" type="stmt"/>
+        <line num="19" count="7" type="cond" truecount="1" falsecount="0"/>
+        <line num="20" count="6" type="cond" truecount="1" falsecount="0"/>
+        <line num="21" count="5" type="stmt"/>
+        <line num="22" count="4" type="stmt"/>
+        <line num="24" count="1" type="stmt"/>
+      </file>
+      <file name="register-demand-controller.ts" path="C:\Users\421931\Desktop\projects_carlos\return-new\src\presentation\controllers\register-demand-controller.ts">
+        <metrics statements="10" coveredstatements="10" conditionals="1" coveredconditionals="1" methods="2" coveredmethods="2"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="8" count="5" type="stmt"/>
+        <line num="9" count="5" type="stmt"/>
+        <line num="13" count="5" type="stmt"/>
+        <line num="14" count="5" type="stmt"/>
+        <line num="15" count="5" type="cond" truecount="1" falsecount="0"/>
+        <line num="16" count="4" type="stmt"/>
+        <line num="18" count="3" type="stmt"/>
+        <line num="20" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="presentation.errors">
+      <metrics statements="16" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="5" coveredmethods="2"/>
+      <file name="access-denied-error.ts" path="C:\Users\421931\Desktop\projects_carlos\return-new\src\presentation\errors\access-denied-error.ts">
+        <metrics statements="3" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <line num="1" count="0" type="stmt"/>
+        <line num="3" count="0" type="stmt"/>
+        <line num="4" count="0" type="stmt"/>
+      </file>
+      <file name="invalid-param-error.ts" path="C:\Users\421931\Desktop\projects_carlos\return-new\src\presentation\errors\invalid-param-error.ts">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="1" count="3" type="stmt"/>
+        <line num="3" count="6" type="stmt"/>
+        <line num="4" count="6" type="stmt"/>
+      </file>
+      <file name="server-error.ts" path="C:\Users\421931\Desktop\projects_carlos\return-new\src\presentation\errors\server-error.ts">
+        <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="1" count="2" type="stmt"/>
+        <line num="3" count="4" type="stmt"/>
+        <line num="4" count="4" type="stmt"/>
+        <line num="5" count="4" type="stmt"/>
+      </file>
+      <file name="token-expired.ts" path="C:\Users\421931\Desktop\projects_carlos\return-new\src\presentation\errors\token-expired.ts">
+        <metrics statements="3" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <line num="1" count="0" type="stmt"/>
+        <line num="3" count="0" type="stmt"/>
+        <line num="4" count="0" type="stmt"/>
+      </file>
+      <file name="token-invalid.ts" path="C:\Users\421931\Desktop\projects_carlos\return-new\src\presentation\errors\token-invalid.ts">
+        <metrics statements="3" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <line num="1" count="0" type="stmt"/>
+        <line num="3" count="0" type="stmt"/>
+        <line num="4" count="0" type="stmt"/>
+      </file>
+    </package>
+    <package name="presentation.helpers">
+      <metrics statements="12" coveredstatements="12" conditionals="6" coveredconditionals="3" methods="9" coveredmethods="5"/>
+      <file name="http-helper.ts" path="C:\Users\421931\Desktop\projects_carlos\return-new\src\presentation\helpers\http-helper.ts">
+        <metrics statements="8" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="7" coveredmethods="3"/>
+        <line num="2" count="2" type="stmt"/>
+        <line num="4" count="6" type="stmt"/>
+        <line num="9" count="2" type="stmt"/>
+        <line num="14" count="2" type="stmt"/>
+        <line num="19" count="2" type="stmt"/>
+        <line num="24" count="4" type="stmt"/>
+        <line num="29" count="9" type="stmt"/>
+        <line num="34" count="2" type="stmt"/>
+      </file>
+      <file name="mapReturnListToInvoiceInput.ts" path="C:\Users\421931\Desktop\projects_carlos\return-new\src\presentation\helpers\mapReturnListToInvoiceInput.ts">
+        <metrics statements="4" coveredstatements="4" conditionals="6" coveredconditionals="3" methods="2" coveredmethods="2"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="15" count="5" type="stmt"/>
+        <line num="22" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="23" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="presentation.middlewares">
+      <metrics statements="30" coveredstatements="0" conditionals="4" coveredconditionals="0" methods="4" coveredmethods="0"/>
+      <file name="auth-middleware.ts" path="C:\Users\421931\Desktop\projects_carlos\return-new\src\presentation\middlewares\auth-middleware.ts">
+        <metrics statements="14" coveredstatements="0" conditionals="3" coveredconditionals="0" methods="2" coveredmethods="0"/>
+        <line num="2" count="0" type="stmt"/>
+        <line num="3" count="0" type="stmt"/>
+        <line num="5" count="0" type="stmt"/>
+        <line num="6" count="0" type="stmt"/>
+        <line num="8" count="0" type="stmt"/>
+        <line num="12" count="0" type="stmt"/>
+        <line num="13" count="0" type="stmt"/>
+        <line num="14" count="0" type="stmt"/>
+        <line num="15" count="0" type="cond" truecount="0" falsecount="1"/>
+        <line num="16" count="0" type="stmt"/>
+        <line num="18" count="0" type="cond" truecount="0" falsecount="1"/>
+        <line num="19" count="0" type="cond" truecount="0" falsecount="1"/>
+        <line num="20" count="0" type="stmt"/>
+        <line num="21" count="0" type="stmt"/>
+      </file>
+      <file name="verifiy-permissions-middleware.ts" path="C:\Users\421931\Desktop\projects_carlos\return-new\src\presentation\middlewares\verifiy-permissions-middleware.ts">
+        <metrics statements="16" coveredstatements="0" conditionals="1" coveredconditionals="0" methods="2" coveredmethods="0"/>
+        <line num="3" count="0" type="stmt"/>
+        <line num="5" count="0" type="stmt"/>
+        <line num="6" count="0" type="stmt"/>
+        <line num="8" count="0" type="stmt"/>
+        <line num="10" count="0" type="stmt"/>
+        <line num="11" count="0" type="stmt"/>
+        <line num="12" count="0" type="stmt"/>
+        <line num="13" count="0" type="stmt"/>
+        <line num="17" count="0" type="stmt"/>
+        <line num="18" count="0" type="stmt"/>
+        <line num="19" count="0" type="stmt"/>
+        <line num="20" count="0" type="stmt"/>
+        <line num="21" count="0" type="cond" truecount="0" falsecount="1"/>
+        <line num="22" count="0" type="stmt"/>
+        <line num="24" count="0" type="stmt"/>
+        <line num="25" count="0" type="stmt"/>
+      </file>
+    </package>
+    <package name="presentation.mocks">
+      <metrics statements="16" coveredstatements="16" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="4"/>
+      <file name="error-mock.ts" path="C:\Users\421931\Desktop\projects_carlos\return-new\src\presentation\mocks\error-mock.ts">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="1" count="4" type="stmt"/>
+        <line num="2" count="4" type="stmt"/>
+      </file>
+      <file name="inputs.ts" path="C:\Users\421931\Desktop\projects_carlos\return-new\src\presentation\mocks\inputs.ts">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="3" count="4" type="stmt"/>
+        <line num="13" count="4" type="stmt"/>
+        <line num="35" count="4" type="stmt"/>
+      </file>
+      <file name="use-cases.ts" path="C:\Users\421931\Desktop\projects_carlos\return-new\src\presentation\mocks\use-cases.ts">
+        <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+        <line num="4" count="2" type="stmt"/>
+        <line num="7" count="3" type="stmt"/>
+        <line num="8" count="3" type="stmt"/>
+        <line num="12" count="2" type="stmt"/>
+        <line num="15" count="4" type="stmt"/>
+        <line num="16" count="4" type="stmt"/>
+      </file>
+      <file name="validator-mock.ts" path="C:\Users\421931\Desktop\projects_carlos\return-new\src\presentation\mocks\validator-mock.ts">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="4" count="2" type="stmt"/>
+        <line num="7" count="10" type="stmt"/>
+        <line num="8" count="10" type="stmt"/>
+      </file>
+      <file name="xml-mock.ts" path="C:\Users\421931\Desktop\projects_carlos\return-new\src\presentation\mocks\xml-mock.ts">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="220" count="1" type="stmt"/>
+      </file>
+    </package>
+  </project>
+</coverage>

@@ -1,0 +1,11 @@
+import { {{pascalCase name}}Controller } from '@/presentation/controllers'
+import { type Controller } from '@/presentation/protocols'
+import { {{camelCase name}}Schema } from '@/validation/validators'
+import { make{{pascalCase name}} } from '../usecases'
+import { makeLogControllerDecorator } from '../decorators/logger-controller-decorator'
+import { makeValidator } from '../validators/validator'
+
+export const make{{pascalCase name}}Controller = (): Controller => {
+  const controller = new {{pascalCase name}}Controller(make{{pascalCase name}}(),makeValidator({{camelCase name}}Schema))
+  return makeLogControllerDecorator(controller)
+}

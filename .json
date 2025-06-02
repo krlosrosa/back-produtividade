@@ -1,0 +1,278 @@
+{
+  "success": true,
+  "data": [
+    {
+      "tipoRetorno": 1,
+      "senhaControle": "311658317",
+      "observacao": null,
+      "numeroNotaFiscal": "50217",
+      "serieNotaFiscal": "1",
+      "devolucaoContabil": false,
+      "latitude": -22.9036716,
+      "longitude": -43.1912968,
+      "dataHoraOcorrencia": "2025-03-26T09:29:51",
+      "dataHoraAceite": "2025-03-26T17:36:45",
+      "usuario": {
+        "id": 21544664,
+        "email": "joao.aguiar@br.lactalis.com"
+      },
+      "operador": {
+        "id": 1620,
+        "nome": "Jamyle Vieira de Araujo"
+      },
+      "motivo": {
+        "id": 13250,
+        "descricao": "V09 ESTABELECIMENTO FECHADO/BALANÇO",
+        "codigo": "32",
+        "setor": {
+          "id": 123,
+          "nome": "Vendas",
+          "area": {
+            "id": 74,
+            "nome": "Comercial"
+          }
+        }
+      },
+      "itens": null
+    },
+    {
+      "tipoRetorno": 1,
+      "senhaControle": "311658318",
+      "observacao": null,
+      "numeroNotaFiscal": "50218",
+      "serieNotaFiscal": "1",
+      "devolucaoContabil": false,
+      "latitude": -22.9036716,
+      "longitude": -43.1912968,
+      "dataHoraOcorrencia": "2025-03-26T09:29:51",
+      "dataHoraAceite": "2025-03-26T17:36:26",
+      "usuario": {
+        "id": 21544664,
+        "email": "joao.aguiar@br.lactalis.com"
+      },
+      "operador": {
+        "id": 1620,
+        "nome": "Jamyle Vieira de Araujo"
+      },
+      "motivo": {
+        "id": 13250,
+        "descricao": "V09 ESTABELECIMENTO FECHADO/BALANÇO",
+        "codigo": "32",
+        "setor": {
+          "id": 123,
+          "nome": "Vendas",
+          "area": {
+            "id": 74,
+            "nome": "Comercial"
+          }
+        }
+      },
+      "itens": null
+    },
+    {
+      "tipoRetorno": 1,
+      "senhaControle": "311658319",
+      "observacao": null,
+      "numeroNotaFiscal": "50219",
+      "serieNotaFiscal": "1",
+      "devolucaoContabil": false,
+      "latitude": -22.9036716,
+      "longitude": -43.1912968,
+      "dataHoraOcorrencia": "2025-03-26T09:29:51",
+      "dataHoraAceite": "2025-03-26T17:36:10",
+      "usuario": {
+        "id": 21544664,
+        "email": "joao.aguiar@br.lactalis.com"
+      },
+      "operador": {
+        "id": 1620,
+        "nome": "Jamyle Vieira de Araujo"
+      },
+      "motivo": {
+        "id": 13250,
+        "descricao": "V09 ESTABELECIMENTO FECHADO/BALANÇO",
+        "codigo": "32",
+        "setor": {
+          "id": 123,
+          "nome": "Vendas",
+          "area": {
+            "id": 74,
+            "nome": "Comercial"
+          }
+        }
+      },
+      "itens": null
+    },
+    {
+      "tipoRetorno": 1,
+      "senhaControle": "311658320",
+      "observacao": null,
+      "numeroNotaFiscal": "68894",
+      "serieNotaFiscal": "1",
+      "devolucaoContabil": false,
+      "latitude": -22.9036716,
+      "longitude": -43.1912968,
+      "dataHoraOcorrencia": "2025-03-26T09:29:51",
+      "dataHoraAceite": "2025-03-26T17:35:48",
+      "usuario": {
+        "id": 21544664,
+        "email": "joao.aguiar@br.lactalis.com"
+      },
+      "operador": {
+        "id": 1620,
+        "nome": "Jamyle Vieira de Araujo"
+      },
+      "motivo": {
+        "id": 13250,
+        "descricao": "V09 ESTABELECIMENTO FECHADO/BALANÇO",
+        "codigo": "32",
+        "setor": {
+          "id": 123,
+          "nome": "Vendas",
+          "area": {
+            "id": 74,
+            "nome": "Comercial"
+          }
+        }
+      },
+      "itens": null
+    },
+    {
+      "tipoRetorno": 1,
+      "senhaControle": "311658320",
+      "observacao": null,
+      "numeroNotaFiscal": "68894",
+      "serieNotaFiscal": "1",
+      "devolucaoContabil": false,
+      "latitude": -22.9036716,
+      "longitude": -43.1912968,
+      "dataHoraOcorrencia": "2025-03-26T09:29:51",
+      "dataHoraAceite": "2025-03-26T17:35:48",
+      "usuario": {
+        "id": 21544664,
+        "email": "joao.aguiar@br.lactalis.com"
+      },
+      "operador": {
+        "id": 1620,
+        "nome": "Jamyle Vieira de Araujo"
+      },
+      "motivo": {
+        "id": 13250,
+        "descricao": "V09 ESTABELECIMENTO FECHADO/BALANÇO",
+        "codigo": "32",
+        "setor": {
+          "id": 123,
+          "nome": "Vendas",
+          "area": {
+            "id": 74,
+            "nome": "Comercial"
+          }
+        }
+      },
+      "itens": null
+    },
+    {
+      "tipoRetorno": 1,
+      "senhaControle": "311658319",
+      "observacao": null,
+      "numeroNotaFiscal": "50219",
+      "serieNotaFiscal": "1",
+      "devolucaoContabil": false,
+      "latitude": -22.9036716,
+      "longitude": -43.1912968,
+      "dataHoraOcorrencia": "2025-03-26T09:29:51",
+      "dataHoraAceite": "2025-03-26T17:36:10",
+      "usuario": {
+        "id": 21544664,
+        "email": "joao.aguiar@br.lactalis.com"
+      },
+      "operador": {
+        "id": 1620,
+        "nome": "Jamyle Vieira de Araujo"
+      },
+      "motivo": {
+        "id": 13250,
+        "descricao": "V09 ESTABELECIMENTO FECHADO/BALANÇO",
+        "codigo": "32",
+        "setor": {
+          "id": 123,
+          "nome": "Vendas",
+          "area": {
+            "id": 74,
+            "nome": "Comercial"
+          }
+        }
+      },
+      "itens": null
+    },
+    {
+      "tipoRetorno": 1,
+      "senhaControle": "311658318",
+      "observacao": null,
+      "numeroNotaFiscal": "50218",
+      "serieNotaFiscal": "1",
+      "devolucaoContabil": false,
+      "latitude": -22.9036716,
+      "longitude": -43.1912968,
+      "dataHoraOcorrencia": "2025-03-26T09:29:51",
+      "dataHoraAceite": "2025-03-26T17:36:26",
+      "usuario": {
+        "id": 21544664,
+        "email": "joao.aguiar@br.lactalis.com"
+      },
+      "operador": {
+        "id": 1620,
+        "nome": "Jamyle Vieira de Araujo"
+      },
+      "motivo": {
+        "id": 13250,
+        "descricao": "V09 ESTABELECIMENTO FECHADO/BALANÇO",
+        "codigo": "32",
+        "setor": {
+          "id": 123,
+          "nome": "Vendas",
+          "area": {
+            "id": 74,
+            "nome": "Comercial"
+          }
+        }
+      },
+      "itens": null
+    },
+    {
+      "tipoRetorno": 1,
+      "senhaControle": "311658317",
+      "observacao": null,
+      "numeroNotaFiscal": "50217",
+      "serieNotaFiscal": "1",
+      "devolucaoContabil": false,
+      "latitude": -22.9036716,
+      "longitude": -43.1912968,
+      "dataHoraOcorrencia": "2025-03-26T09:29:51",
+      "dataHoraAceite": "2025-03-26T17:36:45",
+      "usuario": {
+        "id": 21544664,
+        "email": "joao.aguiar@br.lactalis.com"
+      },
+      "operador": {
+        "id": 1620,
+        "nome": "Jamyle Vieira de Araujo"
+      },
+      "motivo": {
+        "id": 13250,
+        "descricao": "V09 ESTABELECIMENTO FECHADO/BALANÇO",
+        "codigo": "32",
+        "setor": {
+          "id": 123,
+          "nome": "Vendas",
+          "area": {
+            "id": 74,
+            "nome": "Comercial"
+          }
+        }
+      },
+      "itens": null
+    }
+  ],
+  "errors": null
+}

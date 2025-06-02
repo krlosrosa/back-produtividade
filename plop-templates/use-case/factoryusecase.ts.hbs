@@ -1,0 +1,8 @@
+import { Db{{pascalCase name}} } from '@/data/useCases'
+import { {{pascalCase name}} } from '@/domain/usecases'
+import { DemandPrismaRepository } from '@/infra/data/prisma/demand-prisma-repository'
+
+export const make{{pascalCase name}}= (): {{pascalCase name}} => {
+  const prisma = new DemandPrismaRepository()
+  return new Db{{pascalCase name}}(prisma)
+}

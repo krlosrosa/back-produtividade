@@ -1,0 +1,12 @@
+import { type {{pascalCase name}}Repository } from '../protocols'
+import { type {{pascalCase name}} } from '../../domain/usecases'
+
+export class Db{{pascalCase name}} implements {{pascalCase name}} {
+  constructor (private readonly {{camelCase name}}: {{pascalCase name}}Repository) {}
+  async {{camelCase  metodo}} (params: {{pascalCase name}}Repository.Params): Promise<{{pascalCase name}}Repository.Result> {
+    const response = await this.{{camelCase name}}.{{camelCase  metodo}}(params)
+    return response
+  }
+}
+
+

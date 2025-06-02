@@ -1,0 +1,71 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Center {
+  centerId        String            @id @unique
+  description     String
+  state           String
+  cluster String @default("distribuicao")
+  users           User[] // Relacionamento automático
+  funcionarios    Funcionarios[]
+  dadosTransporte DadosTransporte[]
+}
+
+model User {
+  id              String            @id
+  name            String
+  password        String
+  centerId        String
+  token           String?
+  center          Center            @relation(fields: [centerId], references: [centerId])
+  dadosTransporte DadosTransporte[]
+}
+
+model Funcionarios {
+  id       String @id
+  name     String
+  centerId String
+  center   Center @relation(fields: [centerId], references: [centerId])
+  dadosTransporte DadosTransporte[]
+}
+
+model DadosTransporte {
+  id            Int       @id @default(autoincrement())
+  transporte    String
+  empresa       String
+  processo      String
+  caixas        Int
+  unidade       Int
+  visitado      Int
+  horaInicio    DateTime
+  horaFim       DateTime?
+  centerId      String
+  userId        String
+  dataRegistro  DateTime 
+  funcionarioId String
+  funcionario Funcionarios @relation(fields: [funcionarioId], references: [id])
+  registradoPor User      @relation(fields: [userId], references: [id])
+  center        Center    @relation(fields: [centerId], references: [centerId])
+  items         Item[]
+}
+
+model Item {
+  id                     Int    @id @default(autoincrement())
+  empresa                String
+  idPallet               String
+  linhasPickingVisitadas Int
+  quantidadeCaixa        Int
+  quantidadeUnidade      Int 
+  idDemanda              Int
+  transporte             String
+
+  dadosTransporte DadosTransporte @relation(fields: [idDemanda], references: [id])
+
+  @@unique([idPallet, transporte])
+}

@@ -1,0 +1,45 @@
+import { Db{{pascalCase name}} } from './'
+import { type {{pascalCase name}}Repository } from '../protocols'
+
+// Factories para dados de teste
+const makeFakeParams = (): {{pascalCase name}}Repository.Params => ({})
+const makeFakeResult = (): {{pascalCase name}}Repository.Result => (null)
+
+// Factory para SUT e stubs
+interface SutTypes {
+  sut: Db{{pascalCase name}}
+  {{camelCase metodo}}RepositoryStub: {{pascalCase name}}Repository
+}
+
+const makeSut = (): SutTypes => {
+  const {{camelCase metodo}}RepositoryStub: {{pascalCase name}}Repository = {
+    {{camelCase metodo}}: jest.fn().mockResolvedValue(makeFakeResult())
+  }
+  const sut = new Db{{pascalCase name}}({{camelCase metodo}}RepositoryStub)
+  return { sut, {{camelCase metodo}}RepositoryStub }
+}
+
+describe('Db{{pascalCase name}}', () => {
+  describe('{{camelCase metodo}}()', () => {
+    it('should call repository with correct params', async () => {
+      const { sut, {{camelCase metodo}}RepositoryStub } = makeSut()
+      const params = makeFakeParams()
+      await sut.{{camelCase metodo}}(params)
+      expect({{camelCase metodo}}RepositoryStub.{{camelCase metodo}}).toHaveBeenCalledWith(params)
+    })
+
+    it('should return the same result from repository', async () => {
+      const { sut } = makeSut()
+      const result = await sut.{{camelCase metodo}}(makeFakeParams())
+      expect(result).toEqual(makeFakeResult())
+    })
+
+    it('should propagate errors thrown by repository', async () => {
+      const { sut, {{camelCase metodo}}RepositoryStub } = makeSut()
+      jest.spyOn({{camelCase metodo}}RepositoryStub, '{{camelCase metodo}}').mockRejectedValueOnce(
+        new Error('Unexpected error')
+      )
+      await expect(sut.{{camelCase metodo}}(makeFakeParams())).rejects.toThrow('Unexpected error')
+    })
+  })
+})
