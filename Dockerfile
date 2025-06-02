@@ -1,44 +1,39 @@
 # Estágio de construção
 FROM node:18-alpine AS builder
 
+# Cria e define o diretório de trabalho
 WORKDIR /app
 
-# Copiar arquivos de definição de dependências
-COPY package.json package-lock.json* ./
+# Copia os arquivos de definição de dependências
+COPY package*.json ./
 COPY prisma ./prisma/
 
-# Instalar dependências de produção e desenvolvimento
-RUN npm install --production=false
+# Instala as dependências (incluindo as de desenvolvimento para o build)
+RUN npm install
 
-# Copiar o restante do código fonte
+# Copia todo o código fonte
 COPY . .
 
-# Compilar TypeScript para JavaScript
+# Gera o cliente do Prisma e faz o build da aplicação
+RUN npx prisma generate
 RUN npm run build
 
-# Remover dependências de desenvolvimento
-RUN npm prune --production
-
-# Estágio final
+# Estágio de produção
 FROM node:18-alpine
 
 WORKDIR /app
 
-# Copiar arquivos necessários do estágio de construção
+# Copia apenas os arquivos necessários para produção
 COPY --from=builder /app/node_modules ./node_modules
-COPY --from=builder /app/package.json ./package.json
-COPY --from=builder /app/dist ./dist
+COPY --from=builder /app/package*.json ./
 COPY --from=builder /app/prisma ./prisma
+COPY --from=builder /app/dist ./dist
 
-# Gerar o cliente do Prisma
+# Gera o cliente do Prisma novamente (apenas para garantir)
 RUN npx prisma generate
 
-# Variáveis de ambiente (substitua conforme necessário)
-ENV NODE_ENV=production
-ENV PORT=3000
+# Expõe a porta que sua aplicação usa
+EXPOSE 4000
 
-# Expor a porta da aplicação
-EXPOSE $PORT
-
-# Comando para executar a aplicação
-CMD ["node", "dist/main/server.js"]
+# Comando para iniciar a aplicação
+CMD ["npm", "start"]
