@@ -4,7 +4,7 @@ FROM node:18 AS builder
 WORKDIR /app
 
 # Instala dependências
-COPY package.json
+COPY package.json ./
 RUN npm install
 
 # Copia todos os arquivos
