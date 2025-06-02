@@ -1,40 +1,44 @@
-# Etapa 1 - Build
-FROM node:22-alpine AS builder
+# Estágio de construção
+FROM node:18-alpine AS builder
 
 WORKDIR /app
 
-# Instala dependências
-COPY package.json ./
-RUN npm install
+# Copiar arquivos de definição de dependências
+COPY package.json package-lock.json* ./
+COPY prisma ./prisma/
 
-# Copia todos os arquivos
+# Instalar dependências de produção e desenvolvimento
+RUN npm install --production=false
+
+# Copiar o restante do código fonte
 COPY . .
 
-# Gera o Prisma Client
-RUN npx prisma generate
-
-# (Opcional) Executa as migrações em produção
-# RUN npx prisma migrate deploy
-
-# Compila o projeto com o tsconfig específico
+# Compilar TypeScript para JavaScript
 RUN npm run build
 
-# Etapa 2 - Runtime
-FROM node:22-alpine
+# Remover dependências de desenvolvimento
+RUN npm prune --production
+
+# Estágio final
+FROM node:18-alpine
 
 WORKDIR /app
 
-# Copia os arquivos necessários da etapa de build
-COPY --from=builder /app/package.json ./
+# Copiar arquivos necessários do estágio de construção
 COPY --from=builder /app/node_modules ./node_modules
+COPY --from=builder /app/package.json ./package.json
 COPY --from=builder /app/dist ./dist
 COPY --from=builder /app/prisma ./prisma
 
-# Gera o Prisma Client no runtime também (por segurança)
+# Gerar o cliente do Prisma
 RUN npx prisma generate
 
-# Expõe a porta que o Coolify vai mapear
-EXPOSE 3000
+# Variáveis de ambiente (substitua conforme necessário)
+ENV NODE_ENV=production
+ENV PORT=3000
 
-# Starta o app com Node (sem nodemon)
+# Expor a porta da aplicação
+EXPOSE $PORT
+
+# Comando para executar a aplicação
 CMD ["node", "dist/main/server.js"]
