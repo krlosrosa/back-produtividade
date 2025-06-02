@@ -2,8 +2,6 @@ import express, { type Express } from 'express'
 import setupMiddlewares from './middlewares'
 import setupRoutes from './routes'
 
-dotenvFlow.config()
-
 export const setupApp = (): Express => {
   const app = express()
   setupMiddlewares(app)
