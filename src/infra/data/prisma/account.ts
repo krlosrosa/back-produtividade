@@ -70,6 +70,7 @@ export class AccountPrismaRepository
       where: {
         idPallet: params.idPallet,
         transporte: params.transporte,
+        processo: params.processo
       },
     });
     const updateProdutividade = await this.prisma.dadosTransporte.update({

@@ -20,8 +20,9 @@ export class FinalizarProdutividadeController implements Controller {
 
 export namespace SignUpController {
   export type Request = {
-  idPallet: string;
-  transporte: string
+    idPallet: string;
+    transporte: string;
+    processo:string
   };
 }
 

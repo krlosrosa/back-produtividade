@@ -18,7 +18,7 @@ import { makeGetFuncionariosController } from "../factories/controllers/get-func
 export default (router: Router): void => {
   router.post('/signup', adaptRoute(makeAAddAccountController()))
   router.post('/login', adaptRoute(makeLoginController()))
-  router.put('/finalizardemanda/:palletId/:transporte', adaptRoute(makeFinalizarProdutividadeController()))
+  router.put('/finalizardemanda/:processo/:palletId/:transporte', adaptRoute(makeFinalizarProdutividadeController()))
   router.post('/addprodutividade/:centerId', adaptMiddleware(makeAuthMiddleware()) ,adaptRoute(makeAddProdutividadeController()))
   router.get('/listarprodutibidade/:centerId/:data/:processo', adaptMiddleware(makeAuthMiddleware()), adaptRoute(makeGetProdutividadeByCenterController()))
   router.get('/gerarrelatorio/:centerId/:dataInicio/:dataFim', adaptMiddleware(makeAuthMiddleware()), adaptRouteDownload(makeGetProdutividadeIntervalDatarController()))
