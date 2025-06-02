@@ -3,7 +3,7 @@ generator client {
 }
 
 datasource db {
-  provider = "sqlite"
+  provider = "mysql"
   url      = env("DATABASE_URL")
 }
 
@@ -11,7 +11,7 @@ model Center {
   centerId        String            @id @unique
   description     String
   state           String
-  cluster String @default("distribuicao")
+  cluster         String            @default("distribuicao")
   users           User[] // Relacionamento automático
   funcionarios    Funcionarios[]
   dadosTransporte DadosTransporte[]
@@ -28,15 +28,15 @@ model User {
 }
 
 model Funcionarios {
-  id       String @id
-  name     String
-  centerId String
-  center   Center @relation(fields: [centerId], references: [centerId])
+  id              String            @id
+  name            String
+  centerId        String
+  center          Center            @relation(fields: [centerId], references: [centerId])
   dadosTransporte DadosTransporte[]
 }
 
 model DadosTransporte {
-  id            Int       @id @default(autoincrement())
+  id            Int          @id @default(autoincrement())
   transporte    String
   empresa       String
   processo      String
@@ -47,25 +47,27 @@ model DadosTransporte {
   horaFim       DateTime?
   centerId      String
   userId        String
-  dataRegistro  DateTime 
+  dataRegistro  DateTime
   funcionarioId String
-  funcionario Funcionarios @relation(fields: [funcionarioId], references: [id])
-  registradoPor User      @relation(fields: [userId], references: [id])
-  center        Center    @relation(fields: [centerId], references: [centerId])
+  funcionario   Funcionarios @relation(fields: [funcionarioId], references: [id])
+  registradoPor User         @relation(fields: [userId], references: [id])
+  center        Center       @relation(fields: [centerId], references: [centerId])
   items         Item[]
+
 }
 
 model Item {
   id                     Int    @id @default(autoincrement())
   empresa                String
   idPallet               String
+  processo               String 
   linhasPickingVisitadas Int
   quantidadeCaixa        Int
-  quantidadeUnidade      Int 
+  quantidadeUnidade      Int
   idDemanda              Int
   transporte             String
 
   dadosTransporte DadosTransporte @relation(fields: [idDemanda], references: [id])
 
-  @@unique([idPallet, transporte])
+  @@unique([idPallet, transporte, processo])
 }

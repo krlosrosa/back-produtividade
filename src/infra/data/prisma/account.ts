@@ -40,6 +40,7 @@ export class AccountPrismaRepository
   private readonly prisma = new PrismaClient();
 
   async add(params: DadosTransporte): Promise<boolean> {
+    const items = params.items.map((item) => ({...item, processo: params.processo}))
     const produtividade = await this.prisma.dadosTransporte.create({
       data: {
         transporte: params.transporte,
@@ -55,7 +56,7 @@ export class AccountPrismaRepository
         funcionarioId: params.funcionarioId,
         items: {
           createMany: {
-            data: params.items,
+            data: items,
           },
         },
       },
