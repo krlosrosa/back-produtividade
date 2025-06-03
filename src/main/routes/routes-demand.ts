@@ -24,7 +24,7 @@ export default (router: Router): void => {
   router.post('/addprodutividade/:centerId', adaptMiddleware(makeAuthMiddleware()) ,adaptRoute(makeAddProdutividadeController()))
   router.get('/listarprodutibidade/:centerId/:data/:processo', adaptMiddleware(makeAuthMiddleware()), adaptRoute(makeGetProdutividadeByCenterController()))
   router.get('/gerarrelatorio/:centerId/:dataInicio/:dataFim', adaptMiddleware(makeAuthMiddleware()), adaptRouteDownload(makeGetProdutividadeIntervalDatarController()))
-  router.get('/relatoriotodasunidades/:dataInicio/:dataFim', adaptRouteDownload(makeGetProdutividadeIntervalDataAllRegionController()))
+  router.get('/relatoriotodasunidades/:dataInicio/:dataFim', adaptRoute(makeGetProdutividadeIntervalDataAllRegionController()))
   router.get('/buscarfuncionario/:centerId/:id', adaptMiddleware(makeAuthMiddleware()), adaptRoute(makeGetFuncionarioByIdController()))
   router.get('/buscardemanda/:processo/:palletId/:transporte', adaptRoute(makeGetProdutividadeByTransporteController()))
   router.post('/criarfuncionario', adaptMiddleware(makeAuthMiddleware()), adaptRoute(makeCriarFuncionarioController()))
