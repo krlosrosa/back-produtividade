@@ -38,7 +38,7 @@ export const calcularProdutividade = (item: Omit<GetProdutividadeByTransporteAnd
     const horasEfetivas = minutosEfetivos / 60;
 
     // Calcula a produtividade (caixas por hora) permitindo frações
-    const produtividade = item.caixas / horasEfetivas;
+    const produtividade = item.caixas / horasEfetivas / item.visitado;
 
     // Arredonda para 1 casa decimal
     return Math.round(produtividade * 10) / 10;
