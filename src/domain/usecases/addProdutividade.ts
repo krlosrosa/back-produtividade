@@ -9,6 +9,7 @@ type Item = {
   quantidadeCaixa: number;
   quantidadeUnidade: number;
   transporte: string;
+  segmento: string
 };
 
 export type DadosTransporte = {
@@ -24,4 +25,5 @@ export type DadosTransporte = {
   centerId: string
   funcionarioId: string,
   registradoPor: string
+  segmento: string
 };

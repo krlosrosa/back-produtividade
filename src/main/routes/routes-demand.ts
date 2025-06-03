@@ -14,15 +14,17 @@ import { makeGetProdutividadeByTransporteController } from "../factories/control
 import { makeCriarFuncionarioController } from "../factories/controllers/criar-funcionario-controller";
 import { makeGetFuncionariosController } from "../factories/controllers/get-funcionarios-controller-factory";
 import { makeAddPPausarodutividadeController } from "../factories/controllers/add-pausa-controller-factory";
+import { makeGetProdutividadeIntervalDataAllRegionController } from "../factories/controllers/get-produtividade-interval-data-controller-factory-all-region";
 
 
 export default (router: Router): void => {
-  router.post('/signup', adaptRoute(makeAAddAccountController()))
+  router.post('/signup',adaptMiddleware(makeAuthMiddleware()), adaptRoute(makeAAddAccountController()))
   router.post('/login', adaptRoute(makeLoginController()))
   router.put('/finalizardemanda/:processo/:palletId/:transporte', adaptRoute(makeFinalizarProdutividadeController()))
   router.post('/addprodutividade/:centerId', adaptMiddleware(makeAuthMiddleware()) ,adaptRoute(makeAddProdutividadeController()))
   router.get('/listarprodutibidade/:centerId/:data/:processo', adaptMiddleware(makeAuthMiddleware()), adaptRoute(makeGetProdutividadeByCenterController()))
   router.get('/gerarrelatorio/:centerId/:dataInicio/:dataFim', adaptMiddleware(makeAuthMiddleware()), adaptRouteDownload(makeGetProdutividadeIntervalDatarController()))
+  router.get('/relatoriotodasunidades/:dataInicio/:dataFim', adaptRouteDownload(makeGetProdutividadeIntervalDataAllRegionController()))
   router.get('/buscarfuncionario/:centerId/:id', adaptMiddleware(makeAuthMiddleware()), adaptRoute(makeGetFuncionarioByIdController()))
   router.get('/buscardemanda/:processo/:palletId/:transporte', adaptRoute(makeGetProdutividadeByTransporteController()))
   router.post('/criarfuncionario', adaptMiddleware(makeAuthMiddleware()), adaptRoute(makeCriarFuncionarioController()))

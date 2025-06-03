@@ -1,22 +1,22 @@
 import { Controller, HttpResponse } from "@/presentation/protocols";
 import ExcelJS from "exceljs";
-import { serverError } from "@/presentation/helpers";
-import { GetProdutividadeIntervalData } from "@/domain/usecases/get-produtividade-interval-date";
+import { ok, serverError } from "@/presentation/helpers";
 import { formatToBrazilianTimezone } from "@/utils/ajusteData";
+import { GetProdutividadeIntervalDataAllRegion } from "@/domain/usecases/get-produtividade-interval-date-all-region";
 
 
-export class GetProdutivicidadeIntervalDataController implements Controller {
+export class GetProdutivicidadeIntervalDataAllRegionsController implements Controller {
   constructor(
-    private readonly getProdutividade: GetProdutividadeIntervalData
+    private readonly getProdutividadeAllRegion: GetProdutividadeIntervalDataAllRegion
   ) {}
 
   async handle(
-    request: GetProdutivicidadeIntervalDataController.Request
+    request: GetProdutivicidadeIntervalDataAllRegionsController.Request
   ): Promise<HttpResponse> {
     try {
       console.log(request);
       // Obtém os dados do use case
-      const registros = await this.getProdutividade.getProdutividadeInterval(
+      const registros = await this.getProdutividadeAllRegion.getProdutividadeIntervalAllRegions(
         request
       );
 
@@ -67,7 +67,6 @@ export class GetProdutivicidadeIntervalDataController implements Controller {
         },
         { header: "Funcionário ID", key: "funcionarioId", width: 15 },
          { header: "Produtividade", key: "produtividade", width: 15 },
-          { header: "Segmento", key: "segmento", width: 15 },
       ];
 
       // Adiciona os dados
@@ -88,8 +87,7 @@ export class GetProdutivicidadeIntervalDataController implements Controller {
           userId: registro.userId,
           dataRegistro: registro.dataRegistro,
           funcionarioId: registro.funcionarioId,
-          produtividade: registro.produtividade,
-          segmento: registro.segmento
+          produtividade: registro.produtividade
         });
       });
 
@@ -97,6 +95,7 @@ export class GetProdutivicidadeIntervalDataController implements Controller {
       const buffer = await workbook.xlsx.writeBuffer();
 
       // Retorna a resposta com o arquivo para download
+      return ok(registros)
       return {
         statusCode: 200,
         body: Buffer.from(buffer),
@@ -108,9 +107,8 @@ export class GetProdutivicidadeIntervalDataController implements Controller {
   }
 }
 
-export namespace GetProdutivicidadeIntervalDataController {
+export namespace GetProdutivicidadeIntervalDataAllRegionsController {
   export type Request = {
-    centerId: string;
     dataInicio: Date;
     dataFim: Date;
   };

@@ -6,7 +6,7 @@ import { GetFunctionarioByIdRepository } from "@/data/protocols/get-funcionario-
 import { GetFuncionariosByCenterRepository } from "@/data/protocols/get-funcionarios-by-center-repository";
 import GetProdutividadeByCenterAndDataRepository from "@/data/protocols/get-produtividade-by-center-repository";
 import { GetProdutividadeIntervalDataRepository } from "@/data/protocols/get-produtividade-interval-data-repository";
-import GetProdutividadeByTransporteAndIdRepository from "@/data/protocols/get=produtividade-by-transporte-repository";
+import GetProdutividadeByTransporteAndIdRepository from "@/data/protocols/get-produtividade-by-transporte-repository";
 import {
   LoadAccountByEmailRepository,
   LoadAccountByIdRepository,
@@ -24,6 +24,8 @@ import { GetProdutividadeByTransporteAndId } from "@/domain/usecases/get-produti
 import { GetProdutividadeIntervalData } from "@/domain/usecases/get-produtividade-interval-date";
 import { getDayRange } from "@/utils/dateRange";
 import { PrismaClient } from "@prisma/client";
+import { GetProdutividadeIntervalDataAllRegionRepository } from "@/data/protocols/get-produtividade-interval-data-repository-all-region";
+import { GetProdutividadeIntervalDataAllRegion } from "@/domain/usecases/get-produtividade-interval-date-all-region";
 
 export class AccountPrismaRepository
   implements
@@ -38,7 +40,8 @@ export class AccountPrismaRepository
     GetProdutividadeByTransporteAndIdRepository,
     CriarFunctionarioRepository,
     GetFuncionariosByCenterRepository,
-    AddPauseProdutividadeRepository
+    AddPauseProdutividadeRepository,
+    GetProdutividadeIntervalDataAllRegionRepository
 {
   private readonly prisma = new PrismaClient();
 
@@ -60,6 +63,7 @@ export class AccountPrismaRepository
         userId: params.registradoPor,
         dataRegistro: params.dataRegistro,
         funcionarioId: params.funcionarioId,
+        segmento: params.segmento,
         items: {
           createMany: {
             data: items,
@@ -156,6 +160,22 @@ export class AccountPrismaRepository
     return produtividade;
   }
 
+  async getProdutividadeIntervalAllRegions(
+    params: GetProdutividadeIntervalDataAllRegion.Params
+  ): Promise<GetProdutividadeIntervalDataAllRegion.Result[]> {
+    const { start } = getDayRange(params.dataInicio);
+    const { end } = getDayRange(params.dataFim);
+    const produtividade = await this.prisma.dadosTransporte.findMany({
+      where: {
+        dataRegistro: {
+          gte: start,
+          lte: end,
+        },
+      },
+    });
+    return produtividade;
+  }
+
   async getFuncionario(
     params: GetFunctionarioById.Params
   ): Promise<GetFunctionarioById.Result> {
@@ -212,10 +232,10 @@ export class AccountPrismaRepository
     const info = await this.prisma.dadosTransporte.findUnique({
       where: { id: params.id },
     });
-    console.log(info)
+    console.log(info);
     if (info.terminoPause) return false;
     if (info.inicioPausa) {
-      console.log("tem pausa")
+      console.log("tem pausa");
       await this.prisma.dadosTransporte.update({
         where: { id: params.id },
         data: { terminoPause: new Date() },
@@ -223,7 +243,7 @@ export class AccountPrismaRepository
       return true;
     }
     if (!info.horaFim) {
-        console.log("fim pausa")
+      console.log("fim pausa");
       await this.prisma.dadosTransporte.update({
         where: { id: params.id },
         data: { inicioPausa: new Date() },

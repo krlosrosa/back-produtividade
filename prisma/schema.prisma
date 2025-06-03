@@ -51,6 +51,7 @@ model DadosTransporte {
   userId        String
   dataRegistro  DateTime
   funcionarioId String
+  segmento      String
   funcionario   Funcionarios @relation(fields: [funcionarioId], references: [id])
   registradoPor User         @relation(fields: [userId], references: [id])
   center        Center       @relation(fields: [centerId], references: [centerId])
@@ -67,8 +68,9 @@ model Item {
   quantidadeUnidade      Int
   idDemanda              Int
   transporte             String
+  segmento               String
 
   dadosTransporte DadosTransporte @relation(fields: [idDemanda], references: [id])
 
-  @@unique([idPallet, transporte, processo])
+  @@unique([idPallet, transporte, processo, segmento])
 }

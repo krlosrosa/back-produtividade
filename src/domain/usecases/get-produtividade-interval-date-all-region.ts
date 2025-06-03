@@ -1,12 +1,11 @@
-export interface GetProdutividadeIntervalData {
-  getProdutividadeInterval: (
-    params: GetProdutividadeIntervalData.Params
-  ) => Promise<GetProdutividadeIntervalData.Result[]>;
+export interface GetProdutividadeIntervalDataAllRegion {
+  getProdutividadeIntervalAllRegions: (
+    params: GetProdutividadeIntervalDataAllRegion.Params
+  ) => Promise<GetProdutividadeIntervalDataAllRegion.Result[]>;
 }
 
-export namespace GetProdutividadeIntervalData {
+export namespace GetProdutividadeIntervalDataAllRegion {
   export type Params = {
-    centerId: string;
     dataInicio: Date;
     dataFim: Date;
   };

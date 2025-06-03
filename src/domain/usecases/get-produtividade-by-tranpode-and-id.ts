@@ -26,5 +26,6 @@ export namespace GetProdutividadeByTransporteAndId {
   dataRegistro: Date;
   funcionarioId: string;
   produtividade: number
+  segmento?: string
   };
 }

@@ -1,0 +1,2 @@
+-- AlterTable
+ALTER TABLE `DadosTransporte` ADD COLUMN `segmento` VARCHAR(191) NOT NULL DEFAULT 'REFRIGERADO';

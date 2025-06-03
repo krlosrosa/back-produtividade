@@ -1,5 +1,5 @@
 import { GetProdutividadeByTransporteAndId } from "@/domain/usecases/get-produtividade-by-tranpode-and-id";
-import GetProdutividadeByTransporteAndIdRepository from "../protocols/get=produtividade-by-transporte-repository";
+import GetProdutividadeByTransporteAndIdRepository from "../protocols/get-produtividade-by-transporte-repository";
 import { calcularProdutividade } from "@/utils/calcularProdutividade";
 
 export class DbGetProdutividadeByTransporteAndId
