@@ -13,6 +13,7 @@ import { makeGetFuncionarioByIdController } from "../factories/controllers/get-f
 import { makeGetProdutividadeByTransporteController } from "../factories/controllers/get-produtividade-by-transporte";
 import { makeCriarFuncionarioController } from "../factories/controllers/criar-funcionario-controller";
 import { makeGetFuncionariosController } from "../factories/controllers/get-funcionarios-controller-factory";
+import { makeAddPPausarodutividadeController } from "../factories/controllers/add-pausa-controller-factory";
 
 
 export default (router: Router): void => {
@@ -26,5 +27,6 @@ export default (router: Router): void => {
   router.get('/buscardemanda/:processo/:palletId/:transporte', adaptRoute(makeGetProdutividadeByTransporteController()))
   router.post('/criarfuncionario', adaptMiddleware(makeAuthMiddleware()), adaptRoute(makeCriarFuncionarioController()))
   router.get('/buscarfuncionarios/:centerId', adaptMiddleware(makeAuthMiddleware()), adaptRoute(makeGetFuncionariosController()))
+   router.put('/adicionarpausa/:id', adaptMiddleware(makeAuthMiddleware()), adaptRoute(makeAddPPausarodutividadeController()))
   // ## ADDROUTE
 };

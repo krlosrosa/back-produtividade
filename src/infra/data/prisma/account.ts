@@ -1,3 +1,4 @@
+import AddPauseProdutividadeRepository from "@/data/protocols/add-pause-repository";
 import AddProdutividadeRepository from "@/data/protocols/addProdutividade-repository";
 import { CriarFunctionarioRepository } from "@/data/protocols/criar-funcionario";
 import FinalizarProdutividadeRepository from "@/data/protocols/finalizar-produtividade-repository";
@@ -12,6 +13,7 @@ import {
 } from "@/data/protocols/load-account-by-id-repository";
 import { UpdateAccessTokenRepository } from "@/data/protocols/update-access-token-repository";
 import { AddAccount } from "@/domain/usecases";
+import { AddPauseProdutividade } from "@/domain/usecases/add-pause-produtividade";
 import { DadosTransporte } from "@/domain/usecases/addProdutividade";
 import { CriarFunctionario } from "@/domain/usecases/criar-funcionario";
 import { FinalizarParams } from "@/domain/usecases/finalizarProdutividade";
@@ -35,12 +37,16 @@ export class AccountPrismaRepository
     GetFunctionarioByIdRepository,
     GetProdutividadeByTransporteAndIdRepository,
     CriarFunctionarioRepository,
-    GetFuncionariosByCenterRepository
+    GetFuncionariosByCenterRepository,
+    AddPauseProdutividadeRepository
 {
   private readonly prisma = new PrismaClient();
 
   async add(params: DadosTransporte): Promise<boolean> {
-    const items = params.items.map((item) => ({...item, processo: params.processo}))
+    const items = params.items.map((item) => ({
+      ...item,
+      processo: params.processo,
+    }));
     const produtividade = await this.prisma.dadosTransporte.create({
       data: {
         transporte: params.transporte,
@@ -70,7 +76,7 @@ export class AccountPrismaRepository
       where: {
         idPallet: params.idPallet,
         transporte: params.transporte,
-        processo: params.processo
+        processo: params.processo,
       },
     });
     const updateProdutividade = await this.prisma.dadosTransporte.update({
@@ -198,5 +204,31 @@ export class AccountPrismaRepository
     return await this.prisma.funcionarios.findMany({
       where: { centerId: params.centerId },
     });
+  }
+
+  async addPausa(
+    params: AddPauseProdutividade.Params
+  ): Promise<AddPauseProdutividade.Result> {
+    const info = await this.prisma.dadosTransporte.findUnique({
+      where: { id: params.id },
+    });
+    console.log(info)
+    if (info.terminoPause) return false;
+    if (info.inicioPausa) {
+      console.log("tem pausa")
+      await this.prisma.dadosTransporte.update({
+        where: { id: params.id },
+        data: { terminoPause: new Date() },
+      });
+      return true;
+    }
+    if (!info.horaFim) {
+        console.log("fim pausa")
+      await this.prisma.dadosTransporte.update({
+        where: { id: params.id },
+        data: { inicioPausa: new Date() },
+      });
+      return true;
+    }
   }
 }

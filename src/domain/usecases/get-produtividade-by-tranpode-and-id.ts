@@ -19,6 +19,8 @@ export namespace GetProdutividadeByTransporteAndId {
   visitado: number;
   horaInicio: Date;
   horaFim?: Date | null;
+  inicioPausa?: Date | null
+  terminoPause?: Date | null
   centerId: string;
   userId: string;
   dataRegistro: Date;

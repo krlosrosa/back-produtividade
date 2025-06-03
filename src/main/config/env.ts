@@ -1,6 +1,6 @@
 export default {
   mongoUrl: process.env.MONGO_URL || '',
-  port: process.env.PORT || 5050,
+  port: process.env.PORT || 4000,
   jwtSecret: process.env.JWT_SECRET || 'dkhjghjgygfdakhfad',
   publicKey: process.env.PUBLIC_KEY || '',
   baseUrlKeyCloak: process.env.BASE_URL_KEYCLOAK || '',

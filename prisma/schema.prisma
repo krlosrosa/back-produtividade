@@ -45,6 +45,8 @@ model DadosTransporte {
   visitado      Int
   horaInicio    DateTime
   horaFim       DateTime?
+  inicioPausa   DateTime?
+  terminoPause  DateTime?
   centerId      String
   userId        String
   dataRegistro  DateTime
@@ -53,14 +55,13 @@ model DadosTransporte {
   registradoPor User         @relation(fields: [userId], references: [id])
   center        Center       @relation(fields: [centerId], references: [centerId])
   items         Item[]
-
 }
 
 model Item {
   id                     Int    @id @default(autoincrement())
   empresa                String
   idPallet               String
-  processo               String 
+  processo               String
   linhasPickingVisitadas Int
   quantidadeCaixa        Int
   quantidadeUnidade      Int
