@@ -1,7 +1,5 @@
 node_modules
 dist
 .qodo
-.env
-.env.production
 plopfile.js
 plop-templates
