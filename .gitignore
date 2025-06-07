@@ -3,3 +3,5 @@ dist
 .qodo
 plopfile.js
 plop-templates
+.env
+.env.prod
