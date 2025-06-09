@@ -12,7 +12,7 @@ import {
   LoadAccountByIdRepository,
 } from "@/data/protocols/load-account-by-id-repository";
 import { UpdateAccessTokenRepository } from "@/data/protocols/update-access-token-repository";
-import { AddAccount } from "@/domain/usecases";
+import { AddAccount, VerificarPausa } from "@/domain/usecases";
 import { AddPauseProdutividade } from "@/domain/usecases/add-pause-produtividade";
 import { DadosTransporte } from "@/domain/usecases/addProdutividade";
 import { CriarFunctionario } from "@/domain/usecases/criar-funcionario";
@@ -26,6 +26,11 @@ import { getDayRange } from "@/utils/dateRange";
 import { PrismaClient } from "@prisma/client";
 import { GetProdutividadeIntervalDataAllRegionRepository } from "@/data/protocols/get-produtividade-interval-data-repository-all-region";
 import { GetProdutividadeIntervalDataAllRegion } from "@/domain/usecases/get-produtividade-interval-date-all-region";
+import { AddPausaAllRepository } from "@/data/protocols/add-pause-all-repository";
+import { AddPausaAll } from "@/domain/usecases/add-pause-all";
+import { FinalizarPausaAllRepository } from "@/data/protocols/finalizar-pausa-all-repository";
+import { FinalizarPausaAll } from "@/domain/usecases/finalizar-pausa-all";
+import { VerificarPausaRepository } from "@/data/protocols";
 
 export class AccountPrismaRepository
   implements
@@ -41,7 +46,10 @@ export class AccountPrismaRepository
     CriarFunctionarioRepository,
     GetFuncionariosByCenterRepository,
     AddPauseProdutividadeRepository,
-    GetProdutividadeIntervalDataAllRegionRepository
+    GetProdutividadeIntervalDataAllRegionRepository,
+    AddPausaAllRepository,
+    FinalizarPausaAllRepository,
+    VerificarPausaRepository
 {
   private readonly prisma = new PrismaClient();
 
@@ -226,6 +234,73 @@ export class AccountPrismaRepository
     });
   }
 
+  async addPausaAll(params: AddPausaAll.Params): Promise<AddPausaAll.Result> {
+    const update = await this.prisma.dadosTransporte.updateMany({
+      where: {
+        processo: params.processo,
+        dataRegistro: params.data,
+        centerId: params.centerId,
+        inicioPausa: null,
+        horaFim: null, // horaFim DEVE ser nulo
+      },
+      data: {
+        inicioPausa: new Date(),
+      },
+    });
+
+    await this.prisma.pausaGeral.create({
+      data: {
+        processo: params.processo,
+        centerId: params.centerId,
+      },
+    });
+
+    return update.count > 0;
+  }
+
+  async finalizarPausaAll(
+    params: FinalizarPausaAll.Params
+  ): Promise<FinalizarPausaAll.Result> {
+    const update = await this.prisma.dadosTransporte.updateMany({
+      where: {
+        processo: params.processo,
+        dataRegistro: params.data,
+        centerId: params.centerId,
+        inicioPausa: {
+          not: null,
+        },
+        terminoPause: null,
+        horaFim: null, // horaFim DEVE ser nulo
+      },
+      data: {
+        terminoPause: new Date(),
+      },
+    });
+
+    await this.prisma.pausaGeral.delete({
+      where: {
+        processo_centerId: {
+          centerId: params.centerId,
+          processo: params.processo,
+        },
+      },
+    });
+    return !!update;
+  }
+
+  async verificarPausa(
+    params: VerificarPausa.Params
+  ): Promise<VerificarPausa.Result> {
+    const info = await this.prisma.pausaGeral.count({
+      where: {
+        centerId: params.centerId,
+        processo: params.processo,
+      },
+    });
+console.log({informacoes: info})
+    return info > 0 ? true : false;
+  }
+
   async addPausa(
     params: AddPauseProdutividade.Params
   ): Promise<AddPauseProdutividade.Result> {
@@ -235,7 +310,6 @@ export class AccountPrismaRepository
     console.log(info);
     if (info.terminoPause) return false;
     if (info.inicioPausa) {
-      console.log("tem pausa");
       await this.prisma.dadosTransporte.update({
         where: { id: params.id },
         data: { terminoPause: new Date() },

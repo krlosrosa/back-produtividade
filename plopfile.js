@@ -30,7 +30,7 @@ module.exports = function (plop) {
       }
     ],
     actions: [
-      /*
+      
       //TESTES
       {
         type: 'add',
@@ -142,7 +142,7 @@ module.exports = function (plop) {
         path: 'src/infra/data/prisma/demand-prisma-repository.ts',
         pattern: /(\/\/ \[PLOP:INSERIR-METODO-AQUI\])/g,
         templateFile: 'plop-templates/use-case/prisma.ts.hbs',
-      },*/
+      },
 
       //ROUTES
 

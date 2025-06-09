@@ -3,7 +3,10 @@ import { serverError, ok } from "@/presentation/helpers";
 import AddProdutividade from "@/domain/usecases/addProdutividade";
 
 export class AddProdutividadeController implements Controller {
-  constructor(private readonly addProdutividade: AddProdutividade) {}
+  constructor(
+    private readonly addProdutividade: AddProdutividade,
+    
+  ) {}
 
   async handle(request: SignUpController.Request): Promise<HttpResponse> {
     try {
@@ -14,7 +17,6 @@ export class AddProdutividadeController implements Controller {
       });
       return ok(isValid);
     } catch (error) {
-      console.log(error);
       return serverError(error);
     }
   }

@@ -15,6 +15,7 @@ model Center {
   users           User[] // Relacionamento automático
   funcionarios    Funcionarios[]
   dadosTransporte DadosTransporte[]
+  pausa PausaGeral[]
 }
 
 model User {
@@ -33,6 +34,16 @@ model Funcionarios {
   centerId        String
   center          Center            @relation(fields: [centerId], references: [centerId])
   dadosTransporte DadosTransporte[]
+}
+
+model PausaGeral {
+  id Int @id @default(autoincrement())
+  centerId String
+  center        Center       @relation(fields: [centerId], references: [centerId])
+  processo String
+
+  @@unique([processo, centerId])
+
 }
 
 model DadosTransporte {

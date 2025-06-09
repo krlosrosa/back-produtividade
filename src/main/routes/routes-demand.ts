@@ -15,6 +15,9 @@ import { makeCriarFuncionarioController } from "../factories/controllers/criar-f
 import { makeGetFuncionariosController } from "../factories/controllers/get-funcionarios-controller-factory";
 import { makeAddPPausarodutividadeController } from "../factories/controllers/add-pausa-controller-factory";
 import { makeGetProdutividadeIntervalDataAllRegionController } from "../factories/controllers/get-produtividade-interval-data-controller-factory-all-region";
+import { makeAddPausaAllController } from "../factories/controllers/add-pausa-all-factory";
+import { makeFinalizarPausaAllController } from "../factories/controllers/finalizar-pausa-all-factory";
+import { makeVerificarPausaController } from "../factories/controllers";
 
 
 export default (router: Router): void => {
@@ -29,6 +32,11 @@ export default (router: Router): void => {
   router.get('/buscardemanda/:processo/:palletId/:transporte', adaptRoute(makeGetProdutividadeByTransporteController()))
   router.post('/criarfuncionario', adaptMiddleware(makeAuthMiddleware()), adaptRoute(makeCriarFuncionarioController()))
   router.get('/buscarfuncionarios/:centerId', adaptMiddleware(makeAuthMiddleware()), adaptRoute(makeGetFuncionariosController()))
-   router.put('/adicionarpausa/:id', adaptMiddleware(makeAuthMiddleware()), adaptRoute(makeAddPPausarodutividadeController()))
-  // ## ADDROUTE
+  router.put('/adicionarpausa/:id', adaptMiddleware(makeAuthMiddleware()), adaptRoute(makeAddPPausarodutividadeController()))
+  router.put('/addpausaall/:centerId/:processo/:data',adaptMiddleware(makeAuthMiddleware()), adaptRoute(makeAddPausaAllController()))
+  router.put('/finalizarpausaall/:centerId/:processo/:data',adaptMiddleware(makeAuthMiddleware()), adaptRoute(makeFinalizarPausaAllController()))
+  router.get('/statuspause/:centerId/:processo/:data' ,adaptMiddleware(makeAuthMiddleware()), adaptRoute(makeVerificarPausaController()))
+
+ // ## ADDROUTE
+
 };

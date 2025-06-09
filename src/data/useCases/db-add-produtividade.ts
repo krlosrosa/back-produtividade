@@ -4,7 +4,7 @@ import AddProdutividadeRepository from "../protocols/addProdutividade-repository
 
 export class DbAddProdutividade implements AddProdutividade {
   constructor(
-    private readonly addProdutividadeRepository: AddProdutividadeRepository
+    private readonly addProdutividadeRepository: AddProdutividadeRepository,
   ) {}
 
   async add(params: DadosTransporte): Promise<boolean> {
