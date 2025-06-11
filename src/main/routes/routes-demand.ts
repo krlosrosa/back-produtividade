@@ -17,7 +17,7 @@ import { makeAddPPausarodutividadeController } from "../factories/controllers/ad
 import { makeGetProdutividadeIntervalDataAllRegionController } from "../factories/controllers/get-produtividade-interval-data-controller-factory-all-region";
 import { makeAddPausaAllController } from "../factories/controllers/add-pausa-all-factory";
 import { makeFinalizarPausaAllController } from "../factories/controllers/finalizar-pausa-all-factory";
-import { makeVerificarPausaController } from "../factories/controllers";
+import { makeAddFuncionarioEmMassaController, makeResetDeSenhaController, makeVerificarPausaController } from "../factories/controllers";
 
 
 export default (router: Router): void => {
@@ -36,6 +36,8 @@ export default (router: Router): void => {
   router.put('/addpausaall/:centerId/:processo/:data',adaptMiddleware(makeAuthMiddleware()), adaptRoute(makeAddPausaAllController()))
   router.put('/finalizarpausaall/:centerId/:processo/:data',adaptMiddleware(makeAuthMiddleware()), adaptRoute(makeFinalizarPausaAllController()))
   router.get('/statuspause/:centerId/:processo/:data' ,adaptMiddleware(makeAuthMiddleware()), adaptRoute(makeVerificarPausaController()))
+  //router.post('/addfuncionarioemmassa' , adaptRoute(makeAddFuncionarioEmMassaController()))
+    router.put('/resetsenha' ,adaptMiddleware(makeAuthMiddleware()), adaptRoute(makeResetDeSenhaController()))
 
  // ## ADDROUTE
 

@@ -12,7 +12,12 @@ import {
   LoadAccountByIdRepository,
 } from "@/data/protocols/load-account-by-id-repository";
 import { UpdateAccessTokenRepository } from "@/data/protocols/update-access-token-repository";
-import { AddAccount, VerificarPausa } from "@/domain/usecases";
+import {
+  AddAccount,
+  AddFuncionarioEmMassa,
+  ResetDeSenha,
+  VerificarPausa,
+} from "@/domain/usecases";
 import { AddPauseProdutividade } from "@/domain/usecases/add-pause-produtividade";
 import { DadosTransporte } from "@/domain/usecases/addProdutividade";
 import { CriarFunctionario } from "@/domain/usecases/criar-funcionario";
@@ -30,7 +35,11 @@ import { AddPausaAllRepository } from "@/data/protocols/add-pause-all-repository
 import { AddPausaAll } from "@/domain/usecases/add-pause-all";
 import { FinalizarPausaAllRepository } from "@/data/protocols/finalizar-pausa-all-repository";
 import { FinalizarPausaAll } from "@/domain/usecases/finalizar-pausa-all";
-import { VerificarPausaRepository } from "@/data/protocols";
+import {
+  AddFuncionarioEmMassaRepository,
+  ResetDeSenhaRepository,
+  VerificarPausaRepository,
+} from "@/data/protocols";
 
 export class AccountPrismaRepository
   implements
@@ -49,7 +58,9 @@ export class AccountPrismaRepository
     GetProdutividadeIntervalDataAllRegionRepository,
     AddPausaAllRepository,
     FinalizarPausaAllRepository,
-    VerificarPausaRepository
+    VerificarPausaRepository,
+    AddFuncionarioEmMassaRepository,
+    ResetDeSenhaRepository
 {
   private readonly prisma = new PrismaClient();
 
@@ -121,6 +132,7 @@ export class AccountPrismaRepository
       name: user.name,
       password: user.password,
       center: user.centerId,
+      resetSenha: user.resetSenha
     };
   }
 
@@ -297,8 +309,32 @@ export class AccountPrismaRepository
         processo: params.processo,
       },
     });
-console.log({informacoes: info})
+    console.log({ informacoes: info });
     return info > 0 ? true : false;
+  }
+
+  async addFuncionarioEmMassa(
+    params: AddFuncionarioEmMassa.Params
+  ): Promise<AddFuncionarioEmMassa.Result> {
+    const input = await this.prisma.funcionarios.createMany({
+      data: params.funcionarios,
+    });
+
+    return !!input;
+  }
+
+  async reset(params: ResetDeSenha.Params): Promise<ResetDeSenha.Result> {
+    const updateSenha = await this.prisma.user.update({
+      where: {
+        id: params.userId,
+      },
+      data: {
+        password: params.newPassword,
+        resetSenha: false
+      },
+    });
+
+    return !!updateSenha;
   }
 
   async addPausa(

@@ -15,7 +15,7 @@ model Center {
   users           User[] // Relacionamento automático
   funcionarios    Funcionarios[]
   dadosTransporte DadosTransporte[]
-  pausa PausaGeral[]
+  pausa           PausaGeral[]
 }
 
 model User {
@@ -24,6 +24,7 @@ model User {
   password        String
   centerId        String
   token           String?
+  resetSenha      Boolean           @default(true)
   center          Center            @relation(fields: [centerId], references: [centerId])
   dadosTransporte DadosTransporte[]
 }
@@ -37,13 +38,12 @@ model Funcionarios {
 }
 
 model PausaGeral {
-  id Int @id @default(autoincrement())
+  id       Int    @id @default(autoincrement())
   centerId String
-  center        Center       @relation(fields: [centerId], references: [centerId])
+  center   Center @relation(fields: [centerId], references: [centerId])
   processo String
 
   @@unique([processo, centerId])
-
 }
 
 model DadosTransporte {

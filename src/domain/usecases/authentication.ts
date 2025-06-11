@@ -12,5 +12,6 @@ export namespace Authentication {
     accessToken: string
     name: string
     center: string
+    resetSenha: boolean
   }
 }

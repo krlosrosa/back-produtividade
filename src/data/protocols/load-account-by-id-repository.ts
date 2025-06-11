@@ -8,5 +8,6 @@ export namespace LoadAccountByEmailRepository {
     name: string
     password: string
     center: string
+    resetSenha: boolean
   }
 }

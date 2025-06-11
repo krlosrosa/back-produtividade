@@ -22,7 +22,8 @@ export class DbAuthentication implements Authentication {
         return {
           accessToken,
           name: account.name,
-          center: account.center
+          center: account.center,
+          resetSenha: account.resetSenha
         }
       }
     }
