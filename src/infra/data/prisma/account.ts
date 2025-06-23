@@ -211,6 +211,7 @@ export class AccountPrismaRepository
   async getProdutividadeByTransporte(
     params: GetProdutividadeByTransporteAndId.Params
   ): Promise<Omit<GetProdutividadeByTransporteAndId.Result, "produtividade">> {
+    console.log(params)
     const produtividade = await this.prisma.item
       .findFirst({
         where: {
@@ -224,8 +225,10 @@ export class AccountPrismaRepository
         },
       })
       .dadosTransporte();
+      console.log({retorno: produtividade})
     return produtividade;
   }
+
   async criarFuncionario(
     params: CriarFunctionario.Params
   ): Promise<CriarFunctionario.Result> {
