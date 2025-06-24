@@ -14,7 +14,6 @@ export class GetProdutivicidadeIntervalDataController implements Controller {
     request: GetProdutivicidadeIntervalDataController.Request
   ): Promise<HttpResponse> {
     try {
-      console.log(request);
       // Obtém os dados do use case
       const registros = await this.getProdutividade.getProdutividadeInterval(
         request

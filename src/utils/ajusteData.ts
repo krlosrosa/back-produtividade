@@ -8,7 +8,7 @@ export function formatToBrazilianTimezone(date: Date | null): string | null {
     "America/Sao_Paulo"
   );
 
-  console.log(brasilDateTime.toFormat("dd/MM/yyyy hh:mm:ss"))
+  console.log(brasilDateTime.toFormat("dd/MM/yyyy HH:mm:ss"))
 
-  return brasilDateTime.toFormat("dd/MM/yyyy hh:mm:ss");
+  return brasilDateTime.toFormat("dd/MM/yyyy HH:mm:ss");
 }
