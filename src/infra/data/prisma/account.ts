@@ -158,9 +158,17 @@ export class AccountPrismaRepository
           lte: end,
         },
       },
+      include: {
+        funcionario: true
+      }
     });
 
-    return produtividade;
+    const ajustado : GetProdutividadeByCenterAndData.Result[] = produtividade.map((item) => {
+      const {funcionario, ... rest} = item
+      return ({...rest, nomeFuncionario: funcionario.name })
+    })
+
+    return ajustado;
   }
 
   async getProdutividadeInterval(
