@@ -132,7 +132,7 @@ export class AccountPrismaRepository
       name: user.name,
       password: user.password,
       center: user.centerId,
-      resetSenha: user.resetSenha
+      resetSenha: user.resetSenha,
     };
   }
 
@@ -159,14 +159,15 @@ export class AccountPrismaRepository
         },
       },
       include: {
-        funcionario: true
-      }
+        funcionario: true,
+      },
     });
 
-    const ajustado : GetProdutividadeByCenterAndData.Result[] = produtividade.map((item) => {
-      const {funcionario, ... rest} = item
-      return ({...rest, nomeFuncionario: funcionario.name })
-    })
+    const ajustado: GetProdutividadeByCenterAndData.Result[] =
+      produtividade.map((item) => {
+        const { funcionario, ...rest } = item;
+        return { ...rest, nomeFuncionario: funcionario.name };
+      });
 
     return ajustado;
   }
@@ -200,8 +201,18 @@ export class AccountPrismaRepository
           lte: end,
         },
       },
+      include: {
+        funcionario: true,
+      },
     });
-    return produtividade;
+
+    const ajustado: GetProdutividadeByCenterAndData.Result[] =
+      produtividade.map((item) => {
+        const { funcionario, ...rest } = item;
+        return { ...rest, nomeFuncionario: funcionario.name };
+      });
+
+    return ajustado;
   }
 
   async getFuncionario(
@@ -219,7 +230,7 @@ export class AccountPrismaRepository
   async getProdutividadeByTransporte(
     params: GetProdutividadeByTransporteAndId.Params
   ): Promise<Omit<GetProdutividadeByTransporteAndId.Result, "produtividade">> {
-    console.log(params)
+    console.log(params);
     const produtividade = await this.prisma.item
       .findFirst({
         where: {
@@ -233,7 +244,7 @@ export class AccountPrismaRepository
         },
       })
       .dadosTransporte();
-      console.log({retorno: produtividade})
+    console.log({ retorno: produtividade });
     return produtividade;
   }
 
@@ -341,7 +352,7 @@ export class AccountPrismaRepository
       },
       data: {
         password: params.newPassword,
-        resetSenha: false
+        resetSenha: false,
       },
     });
 
