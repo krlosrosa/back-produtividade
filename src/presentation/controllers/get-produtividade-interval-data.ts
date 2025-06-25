@@ -4,7 +4,6 @@ import { serverError } from "@/presentation/helpers";
 import { GetProdutividadeIntervalData } from "@/domain/usecases/get-produtividade-interval-date";
 import { formatToBrazilianTimezone } from "@/utils/ajusteData";
 
-
 export class GetProdutivicidadeIntervalDataController implements Controller {
   constructor(
     private readonly getProdutividade: GetProdutividadeIntervalData
@@ -64,9 +63,10 @@ export class GetProdutivicidadeIntervalDataController implements Controller {
           width: 20,
           style: { numFmt: "dd/mm/yyyy HH:mm:ss" },
         },
+        { header: "Nome do funcionário", key: "funcionarioId", width: 15 },
         { header: "Funcionário ID", key: "funcionarioId", width: 15 },
-         { header: "Produtividade", key: "produtividade", width: 15 },
-          { header: "Segmento", key: "segmento", width: 15 },
+        { header: "Produtividade", key: "produtividade", width: 15 },
+        { header: "Segmento", key: "segmento", width: 15 },
       ];
 
       // Adiciona os dados
@@ -82,13 +82,14 @@ export class GetProdutivicidadeIntervalDataController implements Controller {
           horaInicio: formatToBrazilianTimezone(registro.horaInicio),
           horaFim: formatToBrazilianTimezone(registro.horaFim) || null,
           inicioPausa: formatToBrazilianTimezone(registro.inicioPausa) || null,
-          terminoPause: formatToBrazilianTimezone(registro.terminoPause) || null,
+          terminoPause:
+            formatToBrazilianTimezone(registro.terminoPause) || null,
           centerId: registro.centerId,
           userId: registro.userId,
           dataRegistro: registro.dataRegistro,
           funcionarioId: registro.funcionarioId,
           produtividade: registro.produtividade,
-          segmento: registro.segmento
+          segmento: registro.segmento,
         });
       });
 

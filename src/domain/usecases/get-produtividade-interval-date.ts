@@ -29,5 +29,6 @@ export namespace GetProdutividadeIntervalData {
     funcionarioId: string;
     produtividade?: number
     segmento?: string
+    nomeFuncionario: string;
   };
 }

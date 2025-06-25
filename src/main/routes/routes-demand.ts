@@ -36,8 +36,8 @@ export default (router: Router): void => {
   router.put('/addpausaall/:centerId/:processo/:data',adaptMiddleware(makeAuthMiddleware()), adaptRoute(makeAddPausaAllController()))
   router.put('/finalizarpausaall/:centerId/:processo/:data',adaptMiddleware(makeAuthMiddleware()), adaptRoute(makeFinalizarPausaAllController()))
   router.get('/statuspause/:centerId/:processo/:data' ,adaptMiddleware(makeAuthMiddleware()), adaptRoute(makeVerificarPausaController()))
-  router.post('/addfuncionarioemmassa' , adaptRoute(makeAddFuncionarioEmMassaController()))
-    router.put('/resetsenha' ,adaptMiddleware(makeAuthMiddleware()), adaptRoute(makeResetDeSenhaController()))
+  //router.post('/addfuncionarioemmassa' , adaptRoute(makeAddFuncionarioEmMassaController()))
+  router.put('/resetsenha' ,adaptMiddleware(makeAuthMiddleware()), adaptRoute(makeResetDeSenhaController()))
 
  // ## ADDROUTE
 
