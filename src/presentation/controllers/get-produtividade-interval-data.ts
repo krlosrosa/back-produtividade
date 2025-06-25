@@ -88,6 +88,7 @@ export class GetProdutivicidadeIntervalDataController implements Controller {
           userId: registro.userId,
           dataRegistro: registro.dataRegistro,
           funcionarioId: registro.funcionarioId,
+          nomeFuncionario: registro.nomeFuncionario,
           produtividade: registro.produtividade,
           segmento: registro.segmento,
         });
