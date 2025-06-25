@@ -63,7 +63,7 @@ export class GetProdutivicidadeIntervalDataController implements Controller {
           width: 20,
           style: { numFmt: "dd/mm/yyyy HH:mm:ss" },
         },
-        { header: "Nome do funcionário", key: "funcionarioId", width: 15 },
+        { header: "Nome do funcionário", key: "nomeFuncionario", width: 15 },
         { header: "Funcionário ID", key: "funcionarioId", width: 15 },
         { header: "Produtividade", key: "produtividade", width: 15 },
         { header: "Segmento", key: "segmento", width: 15 },
