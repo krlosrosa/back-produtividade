@@ -1,0 +1,47 @@
+import { differenceInMinutes } from "date-fns";
+
+type ItemWithTimeData = {
+  horaInicio: Date;
+  horaFim?: Date | null;
+  inicioPausa?: Date | null;
+  terminoPause?: Date | null;
+};
+
+export const calcularIntervaloTrabalhado = (item: ItemWithTimeData) => {
+    const horaInicio = new Date(item.horaInicio);
+    const horaFim = item.horaFim ? new Date(item.horaFim) : new Date();
+
+    // Calcula o tempo total em minutos
+    let tempoTotalMinutos = differenceInMinutes(horaFim, horaInicio);
+
+    // Verifica e desconta o tempo de pausa se estiver completo (inicio e fim)
+    if (item.inicioPausa && item.terminoPause) {
+        const inicioPausa = new Date(item.inicioPausa);
+        const terminoPausa = new Date(item.terminoPause);
+        
+        // Calcula o tempo de pausa em minutos
+        const tempoPausaMinutos = differenceInMinutes(terminoPausa, inicioPausa);
+        
+        // Subtrai o tempo de pausa do tempo total
+        tempoTotalMinutos = Math.max(0, tempoTotalMinutos - tempoPausaMinutos);
+    } 
+    // Caso só tenha início de pausa mas não tenha término
+    else if (item.inicioPausa && !item.terminoPause) {
+        const inicioPausa = new Date(item.inicioPausa);
+        
+        // Considera o tempo até o fim do trabalho como pausa
+        const tempoPausaMinutos = differenceInMinutes(horaFim, inicioPausa);
+        
+        // Subtrai o tempo de pausa do tempo total, mas garante pelo menos 1 minuto
+        tempoTotalMinutos = Math.max(1, differenceInMinutes(inicioPausa, horaInicio));
+    }
+
+    // Garante pelo menos 1 minuto de trabalho para evitar valores negativos
+    const minutosEfetivos = Math.max(1, tempoTotalMinutos);
+
+    // Converte minutos para horas
+    const horasEfetivas = minutosEfetivos / 60;
+
+    // Retorna o tempo trabalhado em horas com 2 casas decimais
+    return Math.round(horasEfetivas * 100) / 100;
+}; 

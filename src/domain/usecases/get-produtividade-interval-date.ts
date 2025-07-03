@@ -30,5 +30,6 @@ export namespace GetProdutividadeIntervalData {
     produtividade?: number
     segmento?: string
     nomeFuncionario: string;
+    intervaloTrabalhado?: number
   };
 }

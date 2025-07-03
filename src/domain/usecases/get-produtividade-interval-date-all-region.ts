@@ -29,5 +29,6 @@ export namespace GetProdutividadeIntervalDataAllRegion {
     nomeFuncionario: string;
     produtividade?: number
     segmento?: string
+    intervaloTrabalhado?: number
   };
 }

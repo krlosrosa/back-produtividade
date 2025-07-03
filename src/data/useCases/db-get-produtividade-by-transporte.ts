@@ -1,6 +1,7 @@
 import { GetProdutividadeByTransporteAndId } from "@/domain/usecases/get-produtividade-by-tranpode-and-id";
 import GetProdutividadeByTransporteAndIdRepository from "../protocols/get-produtividade-by-transporte-repository";
 import { calcularProdutividade } from "@/utils/calcularProdutividade";
+import { calcularIntervaloTrabalhado } from "@/utils/calcularIntervaloTrabalhado";
 
 export class DbGetProdutividadeByTransporteAndId
   implements GetProdutividadeByTransporteAndId
@@ -17,8 +18,8 @@ export class DbGetProdutividadeByTransporteAndId
         params
       );
     const produtividade = calcularProdutividade(data)
+    const intervaloTrabalhado = calcularIntervaloTrabalhado(data)
 
-
-    return { ...data, produtividade };
+    return { ...data, produtividade, intervaloTrabalhado };
   }
 }

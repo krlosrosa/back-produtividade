@@ -28,5 +28,6 @@ export namespace GetProdutividadeByCenterAndData {
     nomeFuncionario: string;
     produtividade?: number
     segmento?: string
+    intervaloTrabalhado?: number
   };
 }
