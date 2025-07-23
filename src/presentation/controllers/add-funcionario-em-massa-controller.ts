@@ -13,6 +13,7 @@ export class AddFuncionarioEmMassaController implements Controller {
       const response = await this.addFuncionarioEmMassa.addFuncionarioEmMassa(request);
       return ok(response);
     } catch (err) {
+      console.log(err)
       return serverError(err);
     }
   }

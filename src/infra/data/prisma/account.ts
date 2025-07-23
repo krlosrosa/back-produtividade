@@ -108,6 +108,7 @@ export class AccountPrismaRepository
       },
       data: {
         horaFim: new Date(),
+        observacao: params.observacao,
       },
     });
 
@@ -166,7 +167,7 @@ export class AccountPrismaRepository
     const ajustado: GetProdutividadeByCenterAndData.Result[] =
       produtividade.map((item) => {
         const { funcionario, ...rest } = item;
-        return { ...rest, nomeFuncionario: funcionario.name };
+        return { ...rest, nomeFuncionario: funcionario.name, observacao: rest.observacao as { informacao: string } };
       });
 
     return ajustado;
@@ -193,7 +194,7 @@ export class AccountPrismaRepository
     const ajustado: GetProdutividadeByCenterAndData.Result[] =
       produtividade.map((item) => {
         const { funcionario, ...rest } = item;
-        return { ...rest, nomeFuncionario: funcionario.name };
+        return { ...rest, nomeFuncionario: funcionario.name, observacao: rest.observacao as { informacao: string } };
       });
 
     return ajustado;
@@ -219,7 +220,7 @@ export class AccountPrismaRepository
     const ajustado: GetProdutividadeByCenterAndData.Result[] =
       produtividade.map((item) => {
         const { funcionario, ...rest } = item;
-        return { ...rest, nomeFuncionario: funcionario.name };
+        return { ...rest, nomeFuncionario: funcionario.name, observacao: rest.observacao as { informacao: string } };
       });
 
     return ajustado;

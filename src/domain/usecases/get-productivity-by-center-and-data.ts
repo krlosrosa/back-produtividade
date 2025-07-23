@@ -29,5 +29,8 @@ export namespace GetProdutividadeByCenterAndData {
     produtividade?: number
     segmento?: string
     intervaloTrabalhado?: number
+    observacao?: {
+      informacao: string;
+    }
   };
 }

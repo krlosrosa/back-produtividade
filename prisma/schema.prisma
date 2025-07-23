@@ -63,6 +63,7 @@ model DadosTransporte {
   dataRegistro  DateTime
   funcionarioId String
   segmento      String
+  observacao    Json?
   funcionario   Funcionarios @relation(fields: [funcionarioId], references: [id])
   registradoPor User         @relation(fields: [userId], references: [id])
   center        Center       @relation(fields: [centerId], references: [centerId])

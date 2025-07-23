@@ -5,5 +5,10 @@ export default interface FinalizarProdutividade {
 export type FinalizarParams = {
   idPallet: string;
   transporte: string;
-  processo:string
+  processo: string;
+  observacao?: Observacao;
 };
+
+type Observacao = {
+  informacao: string;
+}

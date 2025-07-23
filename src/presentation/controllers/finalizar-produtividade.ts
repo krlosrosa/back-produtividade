@@ -23,6 +23,9 @@ export namespace SignUpController {
     idPallet: string;
     transporte: string;
     processo:string
+    observacao?: {
+      informacao: string;
+    }
   };
 }
 

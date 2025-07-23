@@ -21,7 +21,8 @@ import { makeAddFuncionarioEmMassaController, makeResetDeSenhaController, makeVe
 
 
 export default (router: Router): void => {
-  router.post('/signup',adaptMiddleware(makeAuthMiddleware()), adaptRoute(makeAAddAccountController()))
+  router.post('/addfuncionarioemmassa' , adaptRoute(makeAddFuncionarioEmMassaController()))
+  router.post('/signup', adaptRoute(makeAAddAccountController()))
   router.post('/login', adaptRoute(makeLoginController()))
   router.put('/finalizardemanda/:processo/:idPallet/:transporte', adaptRoute(makeFinalizarProdutividadeController()))
   router.post('/addprodutividade/:centerId', adaptMiddleware(makeAuthMiddleware()) ,adaptRoute(makeAddProdutividadeController()))
