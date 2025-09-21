@@ -10,7 +10,7 @@ services:
     # Mapeia a porta 8080 do seu computador (host) para a porta 80 do contêiner.
     # Se sua aplicação no Dockerfile expõe outra porta (ex: 3000), mude para "8080:3000".
     ports:
-      - "8080:4000"
+      - "4000:4000"
 
     # Define variáveis de ambiente para a sua aplicação dentro do contêiner.
     environment:
