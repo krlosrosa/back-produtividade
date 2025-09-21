@@ -11,5 +11,6 @@ services:
     environment:
       - NODE_ENV=${NODE_ENV}
       - DATABASE_URL=${DATABASE_URL}
+      - PORT=${PORT}
       # Adicione outras variáveis que precisar aqui, seguindo o mesmo formato.
-      # Ex: - PORT=${PORT}
+      # Ex: 
