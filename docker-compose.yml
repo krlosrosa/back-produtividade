@@ -13,7 +13,7 @@ services:
       - DATABASE_URL=${DATABASE_URL}
       - PORT=${PORT:-4000}
     ports:
-      - "4000:5000"  # Expõe a porta 4000 do container na porta 5000 do host
+      - "5000:4000"  # Expõe a porta 4000 do container na porta 5000 do host
     networks:
       - proxy
     labels:
