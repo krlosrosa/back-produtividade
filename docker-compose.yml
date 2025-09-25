@@ -13,7 +13,7 @@ services:
       - DATABASE_URL=${DATABASE_URL}
       - PORT=${PORT:-4000}
     ports:
-      - "5000:4000"  # Expõe a porta 4000 do container na porta 5000 do host
+      - "4000:4000"  # Expõe a porta 4000 do container na porta 5000 do host
     networks:
       - proxy
     labels:
@@ -22,7 +22,7 @@ services:
       - "traefik.http.routers.backend.rule=Host(`${PRODUTIVIDADE_HOST}`)"
       - "traefik.http.routers.backend.service=backend"
       - "traefik.http.routers.backend.tls.certresolver=letsencrypt"
-      - "traefik.http.services.backend.loadbalancer.server.port=5000"
+      - "traefik.http.services.backend.loadbalancer.server.port=4000"
 
 networks:
   proxy:
