@@ -1,16 +1,29 @@
-# docker-compose.yml
 version: '3.8'
 
 services:
-  back-produtividade:
-    build: .
-    ports:
-      - "4000:4000"
-    # As variáveis de ambiente serão agora injetadas pelo Portainer.
-    # Removida a diretiva 'env_file'.
+  produtividade:
+    build:
+      context: .
+      args:
+        - DATABASE_URL=${DATABASE_URL}
+    container_name: produtividade
+    restart: unless-stopped
     environment:
-      - NODE_ENV=${NODE_ENV}
+      - NODE_ENV=${NODE_ENV:-production}
       - DATABASE_URL=${DATABASE_URL}
-      - PORT=${PORT}
-      # Adicione outras variáveis que precisar aqui, seguindo o mesmo formato.
-      # Ex: 
+      - PORT=${PORT:-4000}
+    ports:
+      - "5000:4000"  # Expõe a porta 4000 do container na porta 5000 do host
+    networks:
+      - proxy
+    labels:
+      # --- Habilita o Traefik para este serviço ---
+      - "traefik.enable=true"
+      - "traefik.http.routers.produtividade.rule=Host(`${PRODUTIVIDADE_HOST}`)"
+      - "traefik.http.routers.produtividade.service=produtividade"
+      - "traefik.http.routers.produtividade.tls.certresolver=letsencrypt"
+      - "traefik.http.services.produtividade.loadbalancer.server.port=4000"
+
+networks:
+  proxy:
+    external: true
